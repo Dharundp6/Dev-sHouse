@@ -1,13 +1,18 @@
 from flask import Flask, request, jsonify
 import cv2
-import supervision as sv
 import numpy as np
 from ultralytics import YOLO
+import supervision as sv
+import base64
 
 app = Flask(__name__)
 
 # Load the YOLO model
-model = YOLO("Model\CarPark2.pt")
+try:
+    model = YOLO("Model/CarPark2.pt")
+except FileNotFoundError:
+    print("ERROR: YOLO model file not found.")
+    exit()
 
 # Function to perform object detection and annotation
 def perform_detection(image, confidence_threshold):
@@ -38,35 +43,41 @@ def perform_detection(image, confidence_threshold):
 
     return annotated_image, car_count, free_count
 
+# Function to convert image bytes to base64 string
+def convert_image_to_base64(image_bytes):
+    encoded_image = base64.b64encode(image_bytes)
+    return encoded_image.decode('utf-8')
+
 @app.route('/detect', methods=['POST'])
 def detect():
-    # Get the image file from the request
-    image_file = request.files['image']
+    if request.method == 'POST':
+        # Get the image file from the request
+        image_file = request.files['image']
 
-    # Read the image file
-    image_bytes = image_file.read()
-    image = cv2.imdecode(np.frombuffer(image_bytes, np.uint8), cv2.IMREAD_COLOR)
+        # Read the image file
+        image_bytes = image_file.read()
+        image = cv2.imdecode(np.frombuffer(image_bytes, np.uint8), cv2.IMREAD_COLOR)
 
-    # Set the confidence threshold (you can modify this as needed)
-    confidence_threshold = 0.2
+        # Set the confidence threshold (you can modify this as needed)
+        confidence_threshold = 0.2
 
-    # Perform object detection and annotation
-    annotated_image, car_count, free_count = perform_detection(image, confidence_threshold)
+        # Perform object detection and annotation
+        annotated_image, car_count, free_count = perform_detection(image, confidence_threshold)
 
-    # Encode the annotated image as JPEG
-    _, encoded_image = cv2.imencode('.jpg', annotated_image)
+        # Encode the annotated image as JPEG
+        _, encoded_image = cv2.imencode('.jpg', annotated_image)
 
-    # Convert the encoded image to bytes
-    encoded_image_bytes = encoded_image.tobytes()
+        # Convert the encoded image to base64 string
+        encoded_image_base64 = convert_image_to_base64(encoded_image.tobytes())
 
-    # Create a response dictionary
-    response = {
-        'image': encoded_image_bytes,
-        'car_count': car_count,
-        'free_count': free_count
-    }
+        # Create a response dictionary
+        response = {
+            'image': encoded_image_base64,
+            'car_count': car_count,
+            'free_count': free_count
+        }
 
-    return jsonify(response)
+        return jsonify(response)
 
 if __name__ == '__main__':
     app.run(debug=True)
