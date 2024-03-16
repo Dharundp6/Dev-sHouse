@@ -4,4 +4,5 @@ numpy>=1.19.3
 ultralytics
 numpy
 pandas
+flask
 supervision
