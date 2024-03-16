@@ -1,31 +1,26 @@
-{% extends "base.html" %} {% block content %}
-
-<h2>Image Classifier</h2>
-
-<div>
-    <form id="upload-file" method="post" enctype="multipart/form-data">
-        <label for="imageUpload" class="upload-label">
-            Choose...
-        </label>
-        <input type="file" name="file" id="imageUpload" accept=".png, .jpg, .jpeg">
-    </form>
-
-    <div class="image-section" style="display:none;">
-        <div class="img-preview">
-            <div id="imagePreview">
-            </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Classifier</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Image Classifier</h2>
+        <form id="upload-form" enctype="multipart/form-data">
+            <input type="file" name="image" id="imageUpload" accept=".jpg, .jpeg, .png">
+            <button type="submit" class="btn btn-primary">Predict</button>
+        </form>
+        <div class="image-section" style="display:none;">
+            <div id="imagePreview"></div>
         </div>
-        <div>
-            <button type="button" class="btn btn-primary btn-lg " id="btn-predict">Predict!</button>
-        </div>
+        <div class="loader" style="display:none;"></div>
+        <h3 id="result" style="display:none;"></h3>
     </div>
 
-    <div class="loader" style="display:none;"></div>
-
-    <h3 id="result">
-        <span> </span>
-    </h3>
-
-</div>
-
-{% endblock %}
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

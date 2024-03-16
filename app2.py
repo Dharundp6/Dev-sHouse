@@ -4,8 +4,6 @@ import numpy as np
 from ultralytics import YOLO
 import supervision as sv
 import base64
-import os
-from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 
@@ -19,15 +17,14 @@ except FileNotFoundError:
 # Function to perform object detection and annotation
 def perform_detection(image, confidence_threshold):
     results = model(image)[0]
-    # Define Detections and BoundingBoxAnnotator from the supervision module
     detections = sv.Detections.from_ultralytics(results)
+
     bounding_box_annotator = sv.BoundingBoxAnnotator()
     label_annotator = sv.LabelAnnotator()
 
     labels = [
         model.model.names[class_id]
-        for class_id
-        in detections.class_id
+        for class_id in detections.class_id
     ]
 
     annotated_image = bounding_box_annotator.annotate(
@@ -54,10 +51,8 @@ def convert_image_to_base64(image_bytes):
 @app.route('/detect', methods=['POST'])
 def index():
     if request.method == 'POST':
-        if 'image' in request.files:
-            # Get the image file from the request
-            image_file = request.files['image']
-
+        image_file = request.files.get('image')
+        if image_file:
             # Read the image file
             image_bytes = image_file.read()
             image = cv2.imdecode(np.frombuffer(image_bytes, np.uint8), cv2.IMREAD_COLOR)
