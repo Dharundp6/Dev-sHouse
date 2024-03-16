@@ -1,6 +1,6 @@
-FROM python:3-alpine3.11
-WORKDIR /app
+FROM python:3.11
+WORKDIR /app 
 COPY . /app
 RUN pip install -r requirements.txt
-EXPOSE 3000 
-CMD python ./app2.py 
+EXPOSE $PORT
+CMD gunicorn --workers=4 --bind 0.0.0.0:$PORT app:app
