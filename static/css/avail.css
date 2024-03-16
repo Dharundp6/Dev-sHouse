@@ -1,0 +1,177 @@
+/* Header */
+.navbar-brand {
+  font-size: 24px;
+}
+
+/* Page Title */
+h1 {
+  font-size: 36px;
+}
+
+/* Interactive Map Section */
+#interactive-map {
+  height: 600px; /* Increased height */
+  width: 100%; /* Fill the width of the container */
+  border: 2px solid #ccc; /* Add border for visual appeal */
+}
+
+/* Categories Section */
+.list-group-item {
+  cursor: pointer;
+}
+
+/* Subsections under each Category */
+.sub-section {
+  display: none; /* Hide sub-sections by default */
+  margin-top: 20px;
+}
+
+/* Show sub-sections when list-group-item is clicked */
+.list-group-item.active + .sub-section {
+  display: block;
+}
+
+/* Sub-section links */
+.sub-section a {
+  display: block;
+  padding: 5px 0;
+  color: #333;
+}
+
+.sub-section a:hover {
+  color: #ffc107;
+}
+
+/* Reservation Callout Section */
+.reservation-info {
+  background-color: #f8f9fa;
+  padding: 20px;
+  text-align: center;
+}
+
+.reservation-info h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+/* Pricing Information Section */
+.pricing-info {
+  background-color: #f8f9fa;
+  padding: 20px;
+  margin-top: 30px;
+}
+
+.pricing-info h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+/* Feedback and Rating Section */
+.rating {
+  margin-bottom: 10px;
+}
+
+.rating input[type="radio"] {
+  display: none;
+}
+
+.rating label {
+  color: #ffc107;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.rating label:hover,
+.rating label:hover ~ label {
+  color: #ffc107;
+}
+
+.rating input[type="radio"]:checked ~ label {
+  color: #ffc107;
+}
+
+/* User Authentication Section */
+.user-authentication p {
+  font-size: 18px;
+}
+
+/* Custom CSS for Available Parking Spots Section */
+.available-spots {
+  background-color: #f9f9f9;
+  padding: 50px 0;
+}
+
+.parking-spot {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #ddd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  transition: background-color 0.3s, transform 0.3s; /* Added transition for hover effect */
+}
+
+.parking-spot i {
+  color: #555;
+}
+
+.parking-spot.available {
+  background-color: #8bc34a; /* green */
+}
+
+.parking-spot.reserved {
+  background-color: #ffc107; /* yellow */
+}
+
+.spot-info {
+  display: block;
+  margin-top: 5px;
+}
+
+/* Custom CSS for Parking Availability Section */
+.parking-availability {
+  padding: 50px 0;
+}
+
+.parking-availability h4 {
+  margin-bottom: 20px;
+}
+
+.list-group-item {
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+}
+
+.list-group-item i {
+  margin-right: 10px;
+}
+
+.list-group-item:first-child {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.list-group-item:last-child {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+/* Custom styles */
+.available-spots .parking-spot {
+  cursor: pointer;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.available-spots .parking-spot:hover {
+  background-color: #f0f0f0;
+  transform: scale(1.05); /* Scale up on hover */
+}
+
+.parking-availability .legend {
+  margin-top: 20px;
+}

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@2.1.1/css/boxicons.min.css"><!-- Link to Boxicons CDN -->
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background : linear-gradient(to bottom, #040019, #03094f, #05198e, #1a4bc6, #1090d4, #5fd1ea);
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .second-layer {
+            background-image: url(auback.jpg); /* Replace 'auback.jpg' with your image filename */
+            background-size: cover;
+            background-position: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.6; /* Adjust the opacity to your preference */
+            z-index: -1; /* Move the second layer behind the content */
+        }
+        .signup-container {
+            width: 450px; /* Increased width */
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+
+        .password-container {
+            position: relative;
+        }
+
+        .password-container input {
+            width: calc(100% - 100px); /* Adjusted input width */
+        }
+
+        .password-container .toggle-password {
+            position: absolute;
+            top: 50%;
+            right: 8px;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }   
+
+        .login-options {
+            text-align: center;
+        }
+
+        .login-options hr {
+            width: 40%;
+            margin: 10px auto;
+        }
+
+        .login-options p {
+            margin-bottom: 10px;
+        }
+
+        .login-options .social-login img {
+            width: 40px; /* Adjusted icon size */
+            margin: 0 10px;
+            cursor: pointer;
+        }
+
+        .login-options .social-login img {
+            width: 30px;
+            margin: 0 10px;
+            cursor: pointer;
+        }
+        .home-link {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .home-icon {
+            font-size: 24px;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="home.html" class="home-link">
+        <i class='bx bx-home'></i>
+    </a>
+    <div class="signup-container">
+        <h2>Sign Up</h2>
+        <form method="post" action="signup.html">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <div class="password-container">
+                <label for="password">Create Password:</label>
+                <input type="password" id="password" name="password" required>
+                <span class="toggle-password" onclick="togglePasswordVisibility('password')">👁️</span>
+            </div>
+
+            <div class="password-container">
+                <label for="confirm-password">Confirm Password:</label>
+                <input type="password" id="confirm-password" name="confirm-password" required>
+                <span class="toggle-password" onclick="togglePasswordVisibility('confirm-password')">👁️</span>
+            </div>
+
+            <button type="submit">Sign Up</button>
+        </form>
+
+        <div class="login-options">
+            <hr>
+            <p>Already have an account?</p>
+            <a href="login.html">Login</a>
+            <hr>
+            <p>or</p>
+            <div class="social-login">
+                <img src="google.png" alt="Google" onclick="loginWithGoogle()">
+                <img src="fb.png" alt="Facebook" onclick="loginWithFacebook()">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function togglePasswordVisibility(inputId) {
+            const input = document.getElementById(inputId);
+            const type = input.getAttribute('type') === 'password' ? 'text' : 'password';
+            input.setAttribute('type', type);
+        }
+
+        function loginWithGoogle() {
+    // Open Google authentication popup or redirect to Google authentication page
+    // Example using OAuth 2.0:
+    // Replace CLIENT_ID with your actual Google OAuth client ID
+    const CLIENT_ID = 'YOUR_GOOGLE_CLIENT_ID';
+    const REDIRECT_URI = 'YOUR_REDIRECT_URI';
+    const SCOPE = 'openid profile email';
+
+    const authUrl = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=token&scope=${SCOPE}`;
+    window.location.href = authUrl;
+}
+
+function loginWithFacebook() {
+    // Open Facebook authentication popup or redirect to Facebook authentication page
+    // Example using Facebook SDK:
+    // Replace YOUR_FACEBOOK_APP_ID with your actual Facebook App ID
+    const YOUR_FACEBOOK_APP_ID = 'YOUR_FACEBOOK_APP_ID';
+    const REDIRECT_URI = 'YOUR_REDIRECT_URI';
+    const SCOPE = 'email';
+
+    // Load Facebook SDK asynchronously
+    (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) { return; }
+        js = d.createElement(s); js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
+    // Initialize Facebook SDK with your app ID
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId      : YOUR_FACEBOOK_APP_ID,
+            cookie     : true,
+            xfbml      : true,
+            version    : 'v13.0'
+        });
+        
+        // Handle Facebook login button click event
+        FB.login(function(response) {
+            // Check if user is logged in and authorized the app
+            if (response.authResponse) {
+                // User is logged in and authorized, you can retrieve user data here
+                // Example: retrieve user email
+                FB.api('/me', { fields: 'email' }, function(userData) {
+                    console.log('Logged in as: ' + userData.email);
+                    // Add your further logic here, such as sending the user data to your server for authentication
+                });
+            } else {
+                // User cancelled login or did not authorize the app
+                console.log('User cancelled login or did not authorize the app.');
+            }
+        }, { scope: SCOPE });
+    };
+}
+
+    </script>
+</body>
+</html>
+
+
+
+
+
+

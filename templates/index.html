@@ -5,18 +5,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Image Classifier</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            text-align: center;
+        }
+        .image-section {
+            margin-top: 30px;
+        }
+        .image-section img {
+            max-width: 100%;
+            height: auto;
+            margin-top: 15px;
+        }
+        .file-upload {
+            background-color: #f8f9fa;
+            border: 2px dashed #ccc;
+            padding: 20px;
+            cursor: pointer;
+        }
+        .file-upload:hover {
+            border-color: #6c757d;
+        }
+        .file-upload input[type="file"] {
+            display: none;
+        }
+        .loader {
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #3498db;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 2s linear infinite;
+            display: none;
+            margin: 0 auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        #result {
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <h2>Image Classifier</h2>
+        <h2>Parking Detection</h2>
         <form id="upload-form" enctype="multipart/form-data">
-            <input type="file" name="image" id="imageUpload" accept=".jpg, .jpeg, .png">
-            <button type="submit" class="btn btn-primary">Predict</button>
+            <div class="file-upload">
+                <label for="imageUpload">Choose a file or drag it here</label>
+                <input type="file" name="image" id="imageUpload" accept=".jpg, .jpeg, .png" class="form-control-file">
+            </div>
+            <button type="submit" class="btn btn-primary mt-2">Predict</button>
         </form>
-        <div class="image-section" style="display:none;">
+        <div class="image-section">
             <div id="imagePreview"></div>
+            <div class="loader"></div>
         </div>
-        <div class="loader" style="display:none;"></div>
         <h3 id="result" style="display:none;"></h3>
     </div>
 

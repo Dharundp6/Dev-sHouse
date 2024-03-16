@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Help and Support</title>
+    <style>
+    
+    body {
+        margin: 0;
+        padding: 0;
+    }
+           /* Header Styles */
+        .header {
+            background-color: #f8f8f8;
+            padding: 20px 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo img {
+            max-height: 40px;
+        }
+
+        .search-bar {
+            flex: 1;
+            text-align: center;
+        }
+
+        .search-bar input[type="text"] {
+            padding: 10px;
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .search-bar button {
+            padding: 10px 20px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            
+        }
+
+        .contact-information {
+            text-align: right end;
+        }
+
+        .contact-information p {
+            margin: 0 0px;
+            font-size: 14px;
+        }
+
+        .contact-information a {
+            text-decoration: none;
+            color: #4caf50;
+            font-weight: bold;
+        }
+
+        .user-options {
+            margin-right: 20px;
+        }
+
+        .user-options a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+
+        /* Sub-header Styles */
+        .sub-header {
+            background-color: #38b100;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        .moving-text {
+            position: relative;
+            animation: moveText 1s linear infinite alternate;
+        }
+
+        @keyframes moveText {
+            0% {
+                left: 0;
+            }
+            50% {
+                left: 20px;
+            }
+            100% {
+                left: 0;
+            }
+        }
+
+        /* Feature Box Styles */
+        .hero {
+            background-color: #f8f8f8;
+            padding: 50px 0;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .feature-box {
+            width: 200px;
+            margin: 20px;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .feature-box img {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 20px;
+        }
+
+        .feature-box h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .feature-box p {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        .feature-content {
+            display: none;
+            text-align: center;
+            padding: 20px;
+            margin-top: 20px;
+            background-color: #f0f0f0;
+            border-radius: 8px;
+        }
+        footer {
+            background-color: #000000;
+            color: #fff;
+            padding: 50px 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+        }
+        .footer-column {
+            flex: 1;
+            margin-right: 20px;
+        }
+        .footer-column:last-child {
+            margin-right: 0;
+        }
+        h4 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+        .social-media-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .social-media-links li {
+            display: inline-block;
+            margin-right: 10px;
+        }
+        .social-media-links li:last-child {
+            margin-right: 0;
+        }
+        .social-media-links a {
+            color: #fff;
+            font-size: 20px;
+        }
+        .contact-us {
+            border-right: 1px solid #fff;
+            padding-right: 30px;
+        }
+        .contact-info {
+            margin-top: 20px;
+        }
+        .info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .info-item i {
+            margin-right: 10px;
+            font-size: 18px;
+            color: #fff;
+        }
+        .info-item p {
+            color: #fff;
+            font-size: 14px;
+            margin: 0;
+        }
+    </style>
+</head>
+
+       <!-- Header Section -->
+
+<header class="header">
+    <div class="container">
+        <!-- Place the page logo on the left -->
+        <div class="logo">
+            <img src="Final.png" alt="Your Company Logo">
+        </div>
+        <!-- Search bar and button next to the logo with correct spacing -->
+        <div class="search-bar">
+            <input type="text" placeholder="Search...">
+            <button type="submit">Search</button>
+        </div>
+        <!-- Contact information with correct spacing -->
+        <div class="contact-information">
+            <p>Email: support@example.com</p>
+            <p>Phone: +1 123-456-7890</p>
+            <p><a href="live-chat">Live Chat</a></p>
+        </div>
+        
+        <!-- Home icon placed below the logout -->
+        <div class="navigation">
+            <ul>
+                <a href="home1.html"><i class="fas fa-home"></i></a>
+                <!-- Add more navigation links here if needed -->
+
+                <!-- Logout placed in the last right extreme -->
+        <div class="user-options">
+            <a href="launch.html">Logout</a>
+        </div>
+    </ul>
+</div>
+</header>
+
+    <!-- Sub Header Section -->
+
+
+    <div class="sub-header">
+        <p class="moving-text">24/7 Customer Support</p>
+    </div>
+    
+    <!-- Main Content Section -->
+
+    <main>
+        <!-- FAQs Content -->
+        <div id="faq-content" class="feature-content">
+            <h2>FAQs</h2>
+            <p>List common questions that users may have about the system, its features, and how to use them effectively.</p>
+            <!-- Include more FAQ items here -->
+        </div>
+
+        <!-- Troubleshooting Guides Content -->
+        <div id="troubleshooting-content" class="feature-content">
+            <h2>Troubleshooting Guides</h2>
+            <p>Offer step-by-step guides to troubleshoot common issues users may encounter while using the system.</p>
+            <!-- Include more troubleshooting guides here -->
+        </div>
+
+        <!-- Customer Support Resources Content -->
+        <div id="customer-support-content" class="feature-content">
+            <h2>Customer Support Resources</h2>
+            <p>Offer various channels for users to seek assistance, such as email support, phone support, live chat, or a support ticket system.</p>
+            <!-- Include more customer support resources here -->
+        </div>
+
+        <main>
+            <!-- Feedback and Contact Form Content -->
+            <div id="feedback-content" class="feature-content">
+                <h2>Feedback and Contact Form</h2>
+                <p>Allow users to submit feedback, suggestions, or questions directly through a contact form on the page.</p>
+                <!-- Include contact form here -->
+            </div>
+        
+            <!-- Links to Additional Resources Content -->
+            <div id="additional-resources-content" class="feature-content">
+                <h2>Links to Additional Resources</h2>
+                <p>Provide links to additional resources, such as community forums, knowledge bases, or user guides.</p>
+                <!-- Include additional resources links here -->
+            </div>
+        
+            <!-- Support Policies and Procedures Content -->
+            <div id="support-policies-content" class="feature-content">
+                <h2>Support Policies and Procedures</h2>
+                <p>Outline the support policies and procedures, including response times, escalation processes, and any limitations or exclusions.</p>
+                <!-- Include support policies and procedures details here -->
+            </div>
+        
+            <!-- Accessibility Information Content -->
+            <div id="accessibility-content" class="feature-content">
+                <h2>Accessibility Information</h2>
+                <p>Ensure that the Help and Support page is accessible to all users, including those with disabilities.</p>
+                <!-- Include accessibility information here -->
+            </div>
+            
+
+        <!-- Include content for other features here -->
+
+    </main>
+
+     <!-- Hero Section -->
+
+<section class="hero">
+    <div class="container">
+        <!-- Feature Boxes -->
+        <div class="feature-box" onclick="toggleFeatureContent('faq-content')">
+            <img src="faq.png" alt="FAQs Icon">
+            <h3>FAQs</h3>
+            <p>List common questions that users may have about the system, its features, and how to use them effectively.</p>
+        </div>
+        <div class="feature-box" onclick="toggleFeatureContent('troubleshooting-content')">
+            <img src="trs.png" alt="Troubleshooting Icon">
+            <h3>Troubleshooting Guides</h3>
+            <p>Offer step-by-step guides to troubleshoot common issues users may encounter while using the system.</p>
+        </div>
+        <div class="feature-box" onclick="toggleFeatureContent('customer-support-content')">
+            <img src="cus.png" alt="Customer Support Icon">
+            <h3>Customer Support Resources</h3>
+            <p>Offer various channels for users to seek assistance, such as email support, phone support, live chat, or a support ticket system.</p>
+        </div>
+        <div class="feature-box" onclick="toggleFeatureContent('feedback-content')">
+            <img src="feedback.png" alt="Feedback Icon">
+            <h3>Feedback and Contact Form</h3>
+            <p>Allow users to submit feedback, suggestions, or questions directly through a contact form on the page.</p>
+        </div>
+        <div class="feature-box" onclick="toggleFeatureContent('additional-resources-content')">
+            <img src="res.png" alt="Additional Resources Icon">
+            <h3>Links to Additional Resources</h3>
+            <p>Provide links to additional resources, such as community forums, knowledge bases, or user guides.</p>
+        </div>
+        <div class="feature-box" onclick="toggleFeatureContent('support-policies-content')">
+            <img src="support.png" alt="Support Policies Icon">
+            <h3>Support Policies and Procedures</h3>
+            <p>Outline the support policies and procedures, including response times, escalation processes, and any limitations or exclusions.</p>
+        </div>
+        <div class="feature-box" onclick="toggleFeatureContent('accessibility-content')">
+            <img src="acc.png" alt="Accessibility Icon">
+            <h3>Accessibility Information</h3>
+            <p>Ensure that the Help and Support page is accessible to all users, including those with disabilities.</p>
+        </div>
+    </div>
+</section>
+
+        <!-- The Contents that will show if they click the boxes  -->
+
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="container">
+            <div class="footer-column">
+                <h4>About Us</h4>
+                <p>Provide a brief overview of your company and its mission. You can also include any relevant company news or updates.</p>
+            </div>
+            <div class="footer-column">
+                <h4>Contact Us</h4>
+                <p>Email: info@example.com</p>
+                <p>Phone: +1 123-456-7890</p>
+                <p>Address: 123 Main Street, City, Country</p>
+            </div>
+            <div class="footer-column">
+                <h4>Follow Us</h4>
+                <p>Connect with us on social media:</p>
+                <ul class="social-media-links">
+                    <li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                    <li><a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+<!-- The clicking on each feature box displays its corresponding content  -->    
+    <script>
+
+    function toggleFeatureContent(id) {
+        var content = document.getElementById(id);
+        if (content.style.display === "none") {
+            content.style.display = "block";
+        } else {
+            content.style.display = "none";
+        }
+    }
+</script>
+    
+</body>
+
+</html>

@@ -1,0 +1,368 @@
+/* Header Styles */
+header {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo img {
+  height: 50px; /* Adjust the height as needed */
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+nav ul li a:hover {
+  color: #007bff; /* Change the color as needed */
+}
+
+.cta-buttons a {
+  text-decoration: none;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.signup-button {
+  background-color: #007bff; /* Change the color as needed */
+}
+
+.signup-button:hover {
+  background-color: #0056b3;
+}
+
+.login-button {
+  background-color: #28a745; /* Change the color as needed */
+}
+
+.login-button:hover {
+  background-color: #218838;
+}
+
+/* Hero Section Styles */
+.hero {
+  background-image: url('s1.jpg'); /* Replace 'park.jpg' with the path to your hero image */
+  background-size: cover;
+  background-position: center;
+  color: #ffffffbb;
+  font-weight:180px;
+  text-align: center;
+  padding: 100px 0;
+}
+
+.hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero-content h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.hero-content p {
+  font-size: 18px;
+}
+
+/* Features Section Styles */
+.features {
+  background-color: #f9f9f9;
+  padding: 50px 0;
+}
+
+.features h2 {
+  text-align: center;
+}
+
+.feature {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.feature img {
+  width: 100px; /* Adjust the size as needed */
+  height: 100px; /* Adjust the size as needed */
+  margin-bottom: 20px;
+}
+
+.feature:hover img {
+  transform: scale(1.1); /* Increase the size of the image on hover */
+}
+
+/* About Us Section Styles */
+.about-us {
+  background-color: #fff;
+  padding: 50px 0;
+}
+
+.about-content {
+  width: 60%;
+}
+
+.about-content h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.about-content p {
+  font-size: 1.1em;
+}
+
+.learn-more-button {
+  display: inline-block;
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-top: 20px;
+  transition: background-color 0.3s;
+}
+
+.learn-more-button:hover {
+  background-color: #0056b3;
+}
+
+.branding-elements {
+  width: 40%;
+  text-align: center;
+}
+
+.branding-elements img {
+  width: 200px; /* Adjust the size as needed */
+  transition: transform 0.3s;
+}
+
+.branding-elements img:hover {
+  transform: rotate(360deg); /* Rotate the image on hover */
+}
+
+/* Testimonials Section Styles */
+.testimonials {
+  background-color: #fff;
+  padding: 50px 0;
+}
+
+.testimonials h2 {
+  text-align: center;
+}
+
+.testimonial {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.testimonial img {
+  width: 100px; /* Adjust the size as needed */
+  height: 100px; /* Adjust the size as needed */
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.testimonial-text {
+  max-width: 600px;
+}
+
+.testimonial-text p {
+  font-style: italic;
+  margin-bottom: 10px;
+}
+
+.testimonial-text cite {
+  font-weight: bold;
+}
+
+/* Call to Action Section Styles */
+.cta {
+  background-color: #007bff;
+  color: #fff;
+  text-align: center;
+  padding: 50px 0;
+}
+
+.cta h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.cta p {
+  font-size: 1.2em;
+  margin-bottom: 30px;
+}
+
+.reserve-button {
+  background-color: #fff;
+  color: #007bff;
+  padding: 15px 30px;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.reserve-button:hover {
+  background-color: #0056b3;
+}
+
+/* Overview Section Styles */
+.overview {
+  background-color: #f9f9f9;
+  padding: 50px 0;
+}
+
+.overview-info {
+  flex-basis: 50%;
+}
+
+.overview-info h2 {
+  margin-bottom: 20px;
+}
+
+.overview-info ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.overview-info ul li {
+  margin-bottom: 10px;
+}
+
+.facility-image {
+  flex-basis: 40%;
+}
+
+.facility-image img {
+  width: 100%; /* Ensure the image takes up the full width of its container */
+  height: auto;
+}
+
+/* Promotions Section Styles */
+.promotions {
+  background-color: #f9f9f9;
+  padding: 50px 0;
+}
+
+.promotions h2 {
+  text-align: center;
+}
+
+.promotions .container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.promotions .discounts,
+.promotions .special-offers {
+  flex-basis: 45%;
+}
+
+.promotions .discounts h2,
+.promotions .special-offers h2 {
+  margin-bottom: 20px;
+}
+
+.promotions ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.promotions ul li {
+  margin-bottom: 10px;
+}
+
+/* How It Works Section Styles */
+.how-it-works {
+  padding: 50px 0;
+}
+
+.how-it-works .container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.how-it-works h2 {
+  margin-bottom: 10px;
+}
+
+.how-it-works p {
+  margin-bottom: 20px;
+  line-height: 1.5;
+  color: #666;
+}
+
+.how-it-works > div {
+  flex-basis: 45%;
+}
+
+/* Footer Section Styles */
+footer {
+  background-color: #070606;
+  color: #fff;
+  padding: 50px 0;
+}
+
+.footer .container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.contact-info,
+.quick-links,
+.social-media {
+  flex-basis: 30%;
+}
+
+.contact-info h3,
+.quick-links h3,
+.social-media h3 {
+  margin-bottom: 20px;
+}
+
+.quick-links ul {
+  padding: 0;
+  list-style-type: none;
+}
+
+.quick-links ul li {
+  margin-bottom: 10px;
+}
+
+.social-media a {
+  margin-right: 10px;
+}
+
+.social-media img {
+  width: 40px; /* Adjust the size as needed */
+  height: 40px; /* Adjust the size as needed */
+  border-radius: 50%;
+}
+
+.social-media img:hover {
+  transform: scale(1.2); /* Increase the size of the image on hover */
+}

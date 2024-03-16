@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parking Management System</title>
+<link rel="stylesheet" href="styles.css">
+<!-- Chatbot CSS -->
+<link rel="stylesheet" href="bot.css">
+<!-- Google Fonts Link For Icons -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,1,0" />
+<!-- Bootstrap CSS -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="logo">
+      <img src="Final.png" alt="Parking Management System Logo">
+    </div>
+    <nav>
+      <ul>
+        <li><a href="avil.html">Parking Availability</a></li>
+        <li><a href="resv.html">Reservation</a></li>
+        <li><a href="register.html">Registration</a></li>
+        <li><a href="payment.html">Payment</a></li>
+        <li><a href="user.html">User Profile</a></li>
+        <li><a href="help.html">Help & Support</a></li>
+        <!--<li><a href="admin.html">Admin Page</a></li>-->
+      </ul>
+    </nav>
+    <div class="cta-buttons">
+      <a href="signup.html" class="signup-button">Sign Up</a>
+      <a href="login.html" class="login-button">Login</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <h1>Welcome to our Parking Management System</h1>
+            <p>Experience hassle-free parking with real-time availability, secure reservations, and convenient payment options.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Chatbot Toggler Button -->
+<button class="chatbot-toggler">
+    <span class="material-symbols-rounded">mode_comment</span>
+    <span class="material-symbols-outlined">close</span>
+</button>
+
+<!-- Chatbot Container -->
+<div class="chatbot">
+    <!-- Chatbot content goes here -->
+    <header>
+        <h2>ParkQwik</h2>
+        <span class="close-btn material-symbols-outlined">close</span>
+    </header>
+    <ul class="chatbox">
+        <li class="chat incoming">
+            <span class="material-symbols-outlined">smart_toy</span>
+            <p>Hi there 👋<br>How can I help you today?</p>
+        </li>
+    </ul>
+    <div class="chat-input">
+        <textarea placeholder="Enter a message..." spellcheck="false" required></textarea>
+        <span id="send-btn" class="material-symbols-rounded">send</span>
+    </div>
+</div>
+
+<section class="features" id="features">
+    <div class="container">
+        <h2>Key Features</h2>
+        <div class="feature">
+            <img src="avail.png" alt="Parking Availability Icon">
+            <h3>Real-time Parking Availability</h3>
+            <p>Check the availability of parking spaces in real-time before arrival.</p>
+        </div>
+        <div class="feature">
+            <img src="online.jpg" alt="Online Reservations Icon">
+            <h3>Online Reservations</h3>
+            <p>Book your parking spot in advance to ensure availability.</p>
+        </div>
+        <div class="feature">
+            <img src="secure.png" alt="Secure Payment Icon">
+            <h3>Secure Payment Options</h3>
+            <p>Choose from a variety of secure payment methods for hassle-free transactions.</p>
+        </div>
+    </div>
+</section>
+
+<section class="about-us">
+    <div class="container">
+        <div class="about-content">
+            <h2>About Us</h2>
+            <p>Welcome to our Parking Management System. Our mission is to provide convenient and efficient parking solutions for drivers while promoting sustainability and environmental responsibility. With our user-friendly platform, you can easily find available parking spaces, make reservations, and securely pay for your parking. Join us in our journey to create a more seamless and eco-friendly parking experience.</p>
+            <a href="help.html" class="learn-more-button">Learn More</a>
+        </div>
+        <div class="branding-elements">
+            <img src="mainlogo.jpg" alt="Parking Management System Logo">
+        </div>
+    </div>
+</section>
+
+<section class="testimonials">
+    <div class="container">
+        <h2>What Our Customers Say</h2>
+        <div class="testimonial">
+            <img src="user1.avif" alt="User 1">
+            <div class="testimonial-text">
+                <p>"I love how easy it is to find parking spots using this system. Highly recommended!"</p>
+                <cite>- John Doe</cite>
+            </div>
+        </div>
+        <div class="testimonial">
+            <img src="user2.avif" alt="User 2">
+            <div class="testimonial-text">
+                 <p>"The reservation feature saved me so much time! Will definitely use it again."</p>
+                 <cite>-Pooja Hegde</cite>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cta">
+    <div class="container">
+        <h2>Ready to Reserve Your Parking Spot?</h2>
+        <p>Secure your parking space now and enjoy convenient parking.</p>
+        <a href="resv.html" class="reserve-button">Reserve Now</a>
+    </div>
+</section>
+
+<section class="overview">
+    <div class="container">
+        <div class="overview-info">
+            <!-- Overview content as provided in the previous response -->
+        </div>
+        <div class="facility-image">
+            <div class="slideshow-container">
+                <img class="mySlides" src="car1.jpg" alt="Parking Facility Image">
+                <img class="mySlides" src="car2.webp" alt="Parking Facility Image">
+                <img class="mySlides" src="car3.jpg" alt="Parking Facility Image">
+                <img class="mySlides" src="car4.jpg" alt="Parking Facility Image">
+                <!-- Add more images as needed -->
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="promotions">
+    <div class="container">
+        <div class="discounts">
+            <h2>Current Discounts</h2>
+            <ul>
+                <li>Early Bird Discount: Get 20% off when you park before 9 AM</li>
+                <li>Weekend Special: Enjoy discounted rates every Saturday and Sunday</li>
+                <li>Loyalty Program: Earn points for every parking transaction and redeem for rewards</li>
+            </ul>
+        </div>
+        <div class="special-offers">
+            <h2>Special Offers</h2>
+            <ul>
+                <li>Long-Term Parking: Save 30% on monthly parking rates</li>
+                <li>Bundled Services: Combine parking with car wash or detailing for additional savings</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section class="how-it-works">
+    <div class="container">
+        <div class="reservation-system">
+            <h2>Reservation System</h2>
+            <p>Users can reserve parking spaces in advance through our online reservation system. This ensures availability upon arrival and eliminates the need for last-minute searches.</p>
+        </div>
+        <div class="real-time-availability">
+            <h2>Real-Time Availability</h2>
+            <p>Our system provides real-time information on parking availability, allowing users to plan their visit accordingly and avoid unnecessary delays.</p>
+        </div>
+        <div class="convenience">
+            <h2>Convenience</h2>
+            <p>We prioritize convenience with easy online booking, secure payment options, and hassle-free entry and exit procedures, making parking management a breeze for users.</p>
+        </div>
+        <div class="time-and-cost-savings">
+            <h2>Time and Cost Savings</h2>
+            <p>Using our system saves users time and money by avoiding last-minute parking searches, reducing fuel consumption, and potentially qualifying for discounts or special offers.</p>
+        </div>
+        <div class="peace-of-mind">
+            <h2>Peace of Mind</h2>
+            <p>Users can enjoy a stress-free parking experience with secure payment options, guaranteed parking reservations, and responsive customer support, ensuring their peace of mind.</p>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <div class="contact-info">
+            <h3>Contact Information</h3>
+            <p>Phone: 123-456-7890</p>
+            <p>Email: info@parkingmanagement.com</p>
+            <p>Address: 123 Parking Street, City, Country</p>
+        </div>
+        <div class="quick-links">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="services.html">Terms of Service</a></li>
+                <li><a href="privacy.html">Privacy Policy</a></li>
+                <li><a href="help.html">Help/Support</a></li>
+                <li><a href="launch.html">Logout</a></li>
+            </ul>
+        </div>
+        <div class="social-media">
+            <h3>Follow Us</h3>
+            <a href="#"><img src="fb.png" alt="Facebook Icon"></a>
+            <a href="#"><img src="twitter.png" alt="Twitter Icon"></a>
+            <a href="#"><img src="insta.png" alt="Instagram Icon"></a>
+        </div>
+    </div>
+</footer>
+
+<script>
+    var slideIndex = 0;
+    carousel();
+
+    function carousel() {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";  
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) {slideIndex = 1}    
+        slides[slideIndex-1].style.display = "block";  
+        setTimeout(carousel, 3000); // Change image every 3 seconds
+    }
+</script>
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<!-- Include the JavaScript for the chatbot -->
+<script src="bot.js" defer></script>
+
+</body>
+</html>

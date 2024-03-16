@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parking Availability</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome for icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  <!-- Include Google Maps API -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
+  <!-- Include MarkerClusterer library -->
+  <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
+  <!-- Custom CSS -->
+  <style>
+    /* Header */
+    .navbar-brand {
+      font-size: 24px;
+      color: #335692 !important; /* Change the color to #37517e */
+    }
+
+    /* Page Title */
+    h1 {
+      font-size: 36px;
+    }
+
+    /* Interactive Map Section */
+    #interactive-map-container {
+      background-color: #f8f9fa; /* Light gray background */
+      padding: 20px; /* Add padding for spacing */
+      border-radius: 10px; /* Rounded corners for visual appeal */
+      margin-bottom: 30px; /* Space between sections */
+    }
+
+    #interactive-map {
+      height: 600px; /* Increased height */
+      width: 100%; /* Fill the width of the container */
+      border: 2px solid #ccc; /* Add border for visual appeal */
+    }
+    /* CSS styles for the map container */
+    #map {
+      height: 400px; /* Adjust height as needed */
+      width: 100%; /* Fill the width of the container */
+    }
+
+    /* Categories Section */
+    .list-group-item {
+      cursor: pointer;
+    }
+
+    /* Subsections under each Category */
+    .sub-section {
+      display: none; /* Hide sub-sections by default */
+      margin-top: 20px;
+    }
+
+    /* Show sub-sections when list-group-item is clicked */
+    .list-group-item.active + .sub-section {
+      display: block;
+    }
+
+    /* Sub-section links */
+    .sub-section a {
+      display: block;
+      padding: 5px 0;
+      color: #333;
+    }
+
+    .sub-section a:hover {
+      color: #ffc107;
+    }
+
+    /* Reservation Callout Section */
+    .reservation-info {
+      background-color: #f8f9fa;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .reservation-info h2 {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    /* Pricing Information Section */
+    .pricing-info {
+      background-color: #f8f9fa;
+      padding: 20px;
+      margin-top: 30px;
+    }
+
+    .pricing-info h2 {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    /* Feedback and Rating Section */
+    .rating {
+      margin-bottom: 10px;
+    }
+
+    .rating input[type="radio"] {
+      display: none;
+    }
+
+    .rating label {
+      color: #ffc107;
+      font-size: 30px;
+      cursor: pointer;
+    }
+
+    .rating label:hover,
+    .rating label:hover ~ label {
+      color: #ffc107;
+    }
+
+    .rating input[type="radio"]:checked ~ label {
+      color: #ffc107;
+    }
+
+    /* User Authentication Section */
+    .user-authentication p {
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header Section -->
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top" style="background-color: #37517e;">
+    <div class="container">
+      <a class="navbar-brand" href="final_logo.png">Your Logo</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="home.html">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="services.html">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="help.html">Help & Support</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+<!-- Main Content Section -->
+<main class="container mt-5">
+  <!-- Page Title -->
+  <h1 class="text-center mb-4">Parking Availability</h1>
+  <!-- Interactive Map Section -->
+  <section id="interactive-map-container">
+    <h2 class="text-center mb-4">Locate your places</h2>
+    <div id="interactive-map">
+      <!-- Google Maps Replica with markers -->
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3105.005825356515!2d-122.4087510846781!3d37.78326497975699!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80858080ee5de3b1%3A0x8d22d57b6cf5ac10!2sGolden%20Gate%20Bridge!5e0!3m2!1sen!2sus!4v1646843801072!5m2!1sen!2sus" width="100%" height="100%" frameborder="0"></iframe>
+    </div>
+  </section>
+  <!-- Categories Section -->
+<div class="categories-container" style="background-color: #7ca1e0; padding: 10px; border-radius: 100px; width: auto;">
+  <!-- Food & Drink Category -->
+  <div class="category-item" onclick="navigateToCategory('food-drink')">
+      <i class="fas fa-utensils category-icon"></i>
+      <span class="category-title">Food & Drink</span>
+  </div>
+  <!-- Things to Do Category -->
+  <div class="category-item" onclick="navigateToCategory('things-to-do')">
+      <i class="fas fa-hiking category-icon"></i>
+      <span class="category-title">Things to Do</span>
+  </div>
+  <!-- Shopping Category -->
+  <div class="category-item" onclick="navigateToCategory('shopping')">
+      <i class="fas fa-shopping-bag category-icon"></i>
+      <span class="category-title">Shopping</span>
+  </div>
+  <!-- Services Category -->
+  <div class="category-item" onclick="navigateToCategory('services')">
+      <i class="fas fa-tools category-icon"></i>
+      <span class="category-title">Services</span>
+  </div>
+</div>
+  <style>
+    /* CSS styles for the categories section */
+    .categories-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .category-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 10px;
+      border-radius: 10px;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .category-item:hover {
+      transform: scale(1.1); /* Scale up on hover */
+    }
+
+    .category-icon {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .category-title {
+      font-size: 18px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <!-- Subsections under each Category -->
+  <style>
+    /* Subsections Styling */
+    .sub-section {
+      display: none; /* Hide sub-sections by default */
+      margin-top: 20px;
+    }
+
+    .sub-section.active {
+      display: block; /* Show active sub-section */
+    }
+
+    /* Sub-section links */
+    .sub-section a {
+      display: block;
+      padding: 5px 0;
+      color: #333;
+    }
+
+    .sub-section a:hover {
+      color: #ffc107;
+    }
+
+    /* Add custom styling for each sub-section */
+    #food-drink {
+      background-color: #f8f9fa;
+      padding: 20px;
+    }
+
+    #things-to-do {
+      background-color: #e9ecef;
+      padding: 20px;
+    }
+
+    #shopping {
+      background-color: #d1ecf1;
+      padding: 20px;
+    }
+
+    #services {
+      background-color: #d4edda;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Subsections under each Category -->
+<section id="food-drink" class="sub-section">
+  <h2>Food & Drink</h2>
+  <ul class="list-group">
+    <li class="list-group-item">Restaurants</li>
+    <li class="list-group-item">Bars</li>
+    <li class="list-group-item">Coffee Shops</li>
+    <li class="list-group-item">Takeaway</li>
+    <li class="list-group-item">Delivery Services</li>
+  </ul>
+</section>
+
+<section id="things-to-do" class="sub-section">
+  <h2>Things to Do</h2>
+  <ul class="list-group">
+    <li class="list-group-item">Parks</li>
+    <li class="list-group-item">Gyms</li>
+    <li class="list-group-item">Art Galleries</li>
+    <li class="list-group-item">Attractions</li>
+  </ul>
+</section>
+
+<section id="shopping" class="sub-section">
+  <h2>Shopping</h2>
+  <ul class="list-group">
+    <li class="list-group-item">Groceries</li>
+    <li class="list-group-item">Beauty Supplies</li>
+    <li class="list-group-item">Car Dealerships</li>
+    <!-- Add more items -->
+  </ul>
+</section>
+
+<section id="services" class="sub-section">
+  <h2>Services</h2>
+  <ul class="list-group">
+    <li class="list-group-item">Night Shelters</li>
+    <li class="list-group-item">Hotels</li>
+    <li class="list-group-item">ATMs</li>
+    <!-- Add more items -->
+  </ul>
+</section>
+
+<section class="available-spots mt-5">
+  <div class="container">
+      <h2 class="text-center mb-4">Available Parking Spots</h2>
+      <div class="row">
+          <div class="col-md-6">
+              <!-- Parking Layout Image with Dynamic Icons -->
+              <div id="parkingLayout" class="parking-layout">
+                  <!-- Placeholder for parking spots, dynamically updated with JavaScript -->
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+
+<style>
+   /* Styles for legend */
+   .legend {
+    margin-bottom: 20px;
+  }
+
+  .legend li {
+    display: flex;
+    align-items: center;
+  }
+
+  .legend .spot-count {
+    margin-left: auto;
+    font-weight: bold;
+  }
+
+  /* Styles for parking spots */
+  .parking-spot {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: #ccc;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .parking-spot:hover {
+    background-color: #78a5d1;
+  }
+
+  .spot-info {
+    font-size: 14px;
+  }
+
+  /* Parking layout styles */
+  .parking-layout {
+    position: relative;
+    background-image: url('layout.jpg'); /* Replace 'layout.jpg' with your image path */
+    background-size: cover;
+    width: 600px;
+    height: 400px; /* Adjust height as needed */
+  }
+  /* Additional styles for available, reserved, and parked spots */
+  .available {
+      color: green;
+  }
+
+  .reserved {
+      color: yellow;
+  }
+
+  .parked {
+      color: red;
+  }
+</style>
+
+
+<!-- Legend -->
+<div class="col-lg-4">
+  <h4>Legend:</h4>
+  <ul class="list-group legend">
+    <!-- Available -->
+    <li class="list-group-item">
+      <i class="fas fa-check-circle text-success mr-2"></i>
+      Available
+      <span class="spot-count" id="availableCount">0</span>
+    </li>
+    <!-- Reserved -->
+    <li class="list-group-item">
+      <i class="fas fa-lock text-warning mr-2"></i>
+      Reserved
+      <span class="spot-count" id="reservedCount">0</span>
+    </li>
+    <!-- Booked -->
+    <li class="list-group-item">
+      <i class="fas fa-times-circle text-danger mr-2"></i>
+      Booked
+      <span class="spot-count" id="bookedCount">0</span>
+    </li>
+  </ul>
+</div>
+<!-- Parking Layout Container -->
+<div id="parkingLayout" class="parking-layout">
+  <div class="parking-spot available" style="top: 50px; left: 100px;"></div>
+  <div class="hover-info-container">
+    <div class="hover-info">
+      <img src="car.jpg" alt="Car Image">
+      <p>Status: Available</p>
+    </div>
+  </div>
+
+  <div class="parking-spot reserved" style="top: 150px; left: 200px;"></div>
+  <div class="hover-info-container">
+    <div class="hover-info">
+      <img src="car.jpg" alt="Car Image">
+      <p>Status: Reserved</p>
+    </div>
+  </div>
+  <!-- Add more parking spots and hover info containers as needed -->
+</div>
+  <section class="model-images mt-5">
+    <div class="container">
+        <h2 class="text-center mb-4">Model Demonstration</h2>
+        <div class="model-gallery">
+            <img src="11.jpg" alt="Image 1" class="model-image active">
+            <img src="22.jpg" alt="Image 2" class="model-image">
+            <!-- Add more images as needed -->
+        </div>
+        <div class="image-legend">
+            <button onclick="showPreviousImage()" class="btn btn-secondary">Previous</button>
+            <button onclick="showNextImage()" class="btn btn-secondary">Next</button>
+        </div>
+    </div>
+</section>
+
+<style>
+    .model-gallery {
+        display: flex;
+        justify-content: space-between;
+        overflow-x: hidden;
+        width: 100%;
+    }
+
+    .model-image {
+        width: 100%;
+        height: auto;
+        display: none;
+    }
+
+    .active {
+        display: block;
+    }
+
+    .image-legend {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+    }
+
+    .btn {
+        margin: 0 5px;
+    }
+</style>
+  <!-- Reservation Callout Section -->
+  <section class="reservation-info mt-5">
+    <div class="container">
+      <h2>Reserve Your Parking Spot Now!</h2>
+      <p>Ensure a guaranteed parking space by reserving in advance. Simply click the button below to proceed.</p>
+      <button class="btn btn-primary">Reserve Here</button>
+    </div>
+  </section>
+
+  <!-- Pricing Information Section -->
+  <section class="pricing-info mt-5">
+    <div class="container">
+      <h2>Parking Pricing</h2>
+      <p>Regular Rate: $10/hour</p>
+      <p>Early Bird Special (6 AM - 10 AM): $5/hour</p>
+      <p>Evening Special (6 PM - 12 AM): $7/hour</p>
+      <p>Monthly Pass: $150/month</p>
+    </div>
+  </section>
+
+  <!-- Feedback and Rating Section -->
+  <section class="rating mt-5">
+    <div class="container">
+      <h2>Rate Your Experience</h2>
+      <form action="">
+        <input type="radio" id="star5" name="rating" value="5">
+        <label for="star5">☆</label>
+        <input type="radio" id="star4" name="rating" value="4">
+        <label for="star4">☆</label>
+        <input type="radio" id="star3" name="rating" value="3">
+        <label for="star3">☆</label>
+        <input type="radio" id="star2" name="rating" value="2">
+        <label for="star2">☆</label>
+        <input type="radio" id="star1" name="rating" value="1">
+        <label for="star1">☆</label>
+      </form>
+    </div>
+  </section>
+
+  <!-- User Authentication Section -->
+  <section class="user-authentication mt-5">
+    <div class="container">
+      <p>Sign in to your account to manage reservations, view parking history, and earn rewards.</p>
+      <button class="btn btn-primary">Sign In</button>
+    </div>
+  </section>
+
+</main>
+
+<!-- Footer Section -->
+<footer class="bg-dark text-light py-4">
+  <div class="container text-center">
+    &copy; 2024 Your Company | All Rights Reserved
+  </div>
+</footer>
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- Font Awesome JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Script to update the parking layout with dynamic icons -->
+<script src='http://codepen.io/assets/libs/fullpage/jquery.js'></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+<script src="parking_dynamic.js"></script>
+<!-- Custom JS for interactive map and functionality -->
+<script src="script.js"></script>
+<script>
+  $(document).ready(function() {
+    // Toggle sub-sections when list-group-item is clicked
+    $('.list-group-item').click(function() {
+      var target = $(this).attr('href');
+      $(target).siblings('.sub-section').removeClass('active').slideUp();
+      $(target).toggleClass('active').slideToggle();
+    });
+
+    // Initialize Google Map
+    function initMap() {
+      // Map options
+      var options = {
+        zoom: 12,
+        center: { lat: 37.7749, lng: -122.4194 } // Example coordinates for San Francisco
+      };
+      // Create map
+      var map = new google.maps.Map(document.getElementById('parking-map'), options);
+
+      // Add parking spots with tooltips
+      // Example: Adding a marker for an available spot
+      var availableSpotMarker = new google.maps.Marker({
+        position: { lat: 37.7749, lng: -122.4194 }, // Example coordinates for a parking spot
+        map: map,
+        icon: {
+          url: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png', // Green dot for available spot
+          scaledSize: new google.maps.Size(30, 30)
+        },
+        title: 'Spot 1' // Spot title
+      });
+      // Tooltip for spot status
+      var availableSpotTooltip = new google.maps.InfoWindow({
+        content: 'Available'
+      });
+      availableSpotMarker.addListener('mouseover', function() {
+        availableSpotTooltip.open(map, availableSpotMarker);
+      });
+      availableSpotMarker.addListener('mouseout', function() {
+        availableSpotTooltip.close();
+      });
+      // Tooltip for vehicle type (optional)
+      // You can add similar logic for reserved and booked spots
+      // You can also customize the icons and tooltips based on spot status
+    }
+
+    // Rate your experience
+    $('.rating input[type="radio"]').click(function() {
+      var rating = $(this).val();
+      // Perform actions based on rating
+      console.log('Rating selected: ' + rating);
+    });
+
+    // User authentication form submission
+    $('.user-authentication button').click(function() {
+      // Perform actions on sign-in button click
+      console.log('Sign-in button clicked');
+    });
+
+    // Feedback form submission
+    $('#feedbackForm').submit(function(event) {
+      event.preventDefault();
+      var feedbackMessage = $('#feedbackMessage').val();
+      // Process feedback message
+      console.log('Feedback submitted: ' + feedbackMessage);
+    });
+  });
+
+
+  // MAPS ACCESSING SCRIPT
+
+  let map;
+    let markers = []; // Array to store individual parking spot markers
+    let clusterer; // MarkerClusterer instance for clustering
+
+    function initMap() {
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: { lat: 37.7749, lng: -122.4194 }, // Example coordinates for San Francisco
+        zoom: 12
+      });
+
+      // Initialize MarkerClusterer
+      clusterer = new MarkerClusterer(map, markers, {
+        imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m',
+        gridSize: 60, // Adjust clustering parameters as needed
+        maxZoom: 15 // Maximum zoom level for clustering
+      });
+
+      // Function to fetch parking spot data from backend API
+      function fetchParkingSpotData() {
+        // Make AJAX call to backend API endpoint
+        $.ajax({
+          url: 'your_backend_api_endpoint', // Replace with your actual API endpoint
+          method: 'GET',
+          success: function(data) {
+            // Process data and update markers on the map
+            updateMapMarkers(data);
+          },
+          error: function(xhr, status, error) {
+            console.error('Error fetching data:', error);
+          }
+        });
+      }
+
+      // Function to update map markers based on received data
+      function updateMapMarkers(data) {
+        // Clear existing markers
+        markers.forEach(marker => marker.setMap(null));
+        markers = [];
+
+        // Iterate through the data and create new markers
+        data.forEach(parkingSpot => {
+          let marker = new google.maps.Marker({
+            position: { lat: parkingSpot.lat, lng: parkingSpot.lng }, // Example: parkingSpot.lat and parkingSpot.lng are latitude and longitude values from your data
+            map: map
+          });
+          markers.push(marker); // Add marker to the markers array
+        });
+
+        // Update MarkerClusterer with new markers
+        clusterer.clearMarkers();
+        clusterer.addMarkers(markers);
+      }
+
+      // Set interval for fetching data periodically (e.g., every 30 seconds)
+      setInterval(fetchParkingSpotData, 30000); // Adjust interval as needed
+    }
+
+    // Initialize the map when the page loads
+    google.maps.event.addDomListener(window, 'load', initMap);
+
+    // Function to navigate to a specific category
+    function navigateToCategory(categoryId) {
+      // You can implement navigation logic here (e.g., scroll to the category section)
+      console.log('Navigating to category:', categoryId);
+    }
+    // Function to toggle sub-sections when list-group-item is clicked
+  $(document).ready(function() {
+    $('.list-group-item').click(function() {
+      var target = $(this).attr('href');
+      $(target).siblings('.sub-section').removeClass('active');
+      $(target).addClass('active').siblings('.sub-section').slideUp();
+      $(target).slideDown();
+    });
+  });
+
+  $(document).ready(function() {
+    // Toggle sub-sections when list-group-item is clicked
+    $('.list-group-item').click(function() {
+      var target = $(this).attr('href');
+      $(target).siblings('.sub-section').removeClass('active');
+      $(target).addClass('active').siblings('.sub-section').slideUp();
+      $(target).slideDown();
+    });
+  });
+
+  // FLASK TO HTML MODEL DYNAMICAL OUTPUT 
+
+    $(document).ready(function() {
+      // Function to update parking spot counts
+      function updateParkingSpots(carCount, freeCount) {
+        $('#car-count-value').text(carCount);
+        $('#free-count-value').text(freeCount);
+
+        // Highlight the parking spots section based on availability
+        if (freeCount > 0) {
+          $('#parking-spots').addClass('available');
+        } else {
+          $('#parking-spots').removeClass('available');
+        }
+      }
+
+      // Periodically update parking spot counts
+      setInterval(function() {
+        $.ajax({
+          type: 'POST',
+          url: '/detect',
+          processData: false,
+          contentType: false,
+          cache: false,
+          data: new FormData($('#image-form')[0]),
+          success: function(response) {
+            updateParkingSpots(response.car_count, response.free_count);
+          },
+          error: function(xhr, status, error) {
+            console.error('Error:', error);
+          }
+        });
+      }, 5000); // Update every 5 seconds (adjust as needed)
+    });
+    
+document.addEventListener('DOMContentLoaded', function () {
+    const parkingLayout = document.getElementById('parkingLayout');
+    const availableSlotsCount = parkingData.filter(spot => spot.status === 'available').length;
+    const reservedSlotsCount = parkingData.filter(spot => spot.status === 'reserved').length;
+    const bookedSlotsCount = parkingData.filter(spot => spot.status === 'booked').length;
+
+    // Loop through parkingData to create and position parking spots dynamically
+    parkingData.forEach(function (spot) {
+        const spotElement = document.createElement('div');
+        spotElement.classList.add('parking-spot', spot.status);
+        spotElement.style.left = `${getRandomPosition()}%`; // Adjust position randomly
+        spotElement.style.top = `${getRandomPosition()}%`; // Adjust position randomly
+        spotElement.innerHTML = `<i class="fas fa-car fa-2x"></i><span class="spot-info">Spot ${spot.spot}</span>`;
+        parkingLayout.appendChild(spotElement);
+    });
+
+    // Display available, reserved, and booked slots counts
+    const availableSlotsLabel = document.createElement('div');
+    availableSlotsLabel.textContent = `Available Slots: ${availableSlotsCount}`;
+    parkingLayout.appendChild(availableSlotsLabel);
+
+    const reservedSlotsLabel = document.createElement('div');
+    reservedSlotsLabel.textContent = `Reserved Slots: ${reservedSlotsCount}`;
+    parkingLayout.appendChild(reservedSlotsLabel);
+
+    const bookedSlotsLabel = document.createElement('div');
+    bookedSlotsLabel.textContent = `Booked Slots: ${bookedSlotsCount}`;
+    parkingLayout.appendChild(bookedSlotsLabel);
+
+    // Calculate and display total number of vehicles in each lot
+    const totalVehiclesCount = parkingData.length;
+    const totalVehiclesLabel = document.createElement('div');
+    totalVehiclesLabel.textContent = `Total Vehicles: ${totalVehiclesCount}`;
+    parkingLayout.appendChild(totalVehiclesLabel);
+});
+
+// Function to get random position (for demonstration purposes)
+function getRandomPosition() {
+    return Math.floor(Math.random() * 80) + 10; // Random position between 10% and 90%
+}
+
+
+    // Function to get random position (for demonstration purposes)
+    function getRandomPosition() {
+        return Math.floor(Math.random() * 80) + 10; // Random position between 10% and 90%
+    }
+
+    // Previous and Next function 
+    let currentImageIndex = 0;
+    const images = document.querySelectorAll('.model-image');
+
+    function showImage(index) {
+        images.forEach(image => image.classList.remove('active'));
+        images[index].classList.add('active');
+        currentImageIndex = index;
+    }
+
+    function showNextImage() {
+        currentImageIndex = (currentImageIndex + 1) % images.length;
+        showImage(currentImageIndex);
+    }
+
+    function showPreviousImage() {
+        currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+        showImage(currentImageIndex);
+    }
+
+    // Sample spot counts (replace with your actual counts)
+    let availableCount = 10;
+    let reservedCount = 5;
+    let bookedCount = 3;
+
+    // Update spot counts in the legend
+    document.getElementById('availableCount').textContent = availableCount;
+    document.getElementById('reservedCount').textContent = reservedCount;
+    document.getElementById('bookedCount').textContent = bookedCount;
+
+    // Add tick marks for available spots on the layout
+    const parkingLayout = document.getElementById('parkingLayout');
+    for (let i = 0; i < availableCount; i++) {
+      const spotElement = document.createElement('div');
+      spotElement.classList.add('parking-spot', 'available');
+      spotElement.style.top = `${getRandomPosition()}%`; // Adjust position randomly
+      spotElement.style.left = `${getRandomPosition()}%`; // Adjust position randomly
+      parkingLayout.appendChild(spotElement);
+    }
+
+    // Function to get random position (for demonstration purposes)
+    function getRandomPosition() {
+      return Math.floor(Math.random() * 80) + 10; // Random position between 10% and 90%
+    }
+
+    
+    </script>
+</body>
+</html>

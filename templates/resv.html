@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Futuristic Navbar</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* Custom styles for the navbar */
+    .navbar-custom {
+      background-color:#37517e; /* Black background */
+      font-family: 'Roboto', sans-serif; /* Futuristic font */
+    }
+    .navbar-custom .navbar-brand, 
+    .navbar-custom .navbar-nav .nav-link {
+      color: #ffffff; /* White text color */
+      transition: color 0.3s ease-in-out; /* Smooth color transition */
+    }
+    .navbar-custom .navbar-nav .nav-link:hover {
+      color: #ff9900; /* Orange hover color */
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
+    <div class="container">
+      <a class="navbar-brand" href="#">Futuristic Parking</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="home1.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Services</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              More
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Parking Reservation</a>
+              <a class="dropdown-item" href="#">Contact Us</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">FAQ</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <section class="hero">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-6 d-flex align-items-center">
+          <div class="hero-content">
+            <h1 class="display-4 text-white mb-4">Welcome to Futuristic Parking</h1>
+            <p class="lead text-white">Book your parking spot now and enjoy hassle-free parking in the city.</p>
+            <a href="#reservation" class="btn btn-primary btn-lg mt-3">Reserve Now</a>
+          </div>
+        </div>
+        <div class="col-lg-6 d-none d-lg-block">
+          <!-- Replace the URL with your desired image or video -->
+          <div class="hero-image" style="background-image: url('background2.jpeg');"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <style>
+    /* Custom styles for the hero section */
+    .hero {
+      background-color: #000000; /* Black background */
+      padding: 100px 0; /* Adjust padding as needed */
+      overflow: hidden; /* Hide overflowing content */
+    }
+    .hero-content {
+      padding: 0 20px; /* Add padding to the content */
+      text-align: center; /* Center align content */
+    }
+    .hero-image {
+      background-size: cover;
+      background-position: center;
+      height: 100vh; /* Adjust height for full-screen view */
+    }
+    /* Parallax scrolling effect */
+    .hero-image {
+      transform: translateZ(0);
+      backface-visibility: hidden;
+      perspective: 1000px;
+    }
+    .hero-image:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.3); /* Adjust opacity as needed */
+    }
+    /* Typography */
+    .hero-content h1 {
+      font-size: 3rem; /* Adjust font size */
+    }
+    .hero-content p {
+      font-size: 1.25rem; /* Adjust font size */
+    }
+    /* Responsive design */
+    @media (max-width: 992px) {
+      .hero-content {
+        padding-top: 50px; /* Adjust padding for smaller screens */
+      }
+      .hero-image {
+        display: none; /* Hide image on smaller screens */
+      }
+    }
+  </style>
+  <!-- Countdown Timer Section -->
+<section class="countdown-section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6 text-center">
+        <div id="countdown" class="countdown-timer">
+          <div class="countdown-item">
+            <span id="days"></span>
+            <span>Days</span>
+          </div>
+          <div class="countdown-item">
+            <span id="hours"></span>
+            <span>Hours</span>
+          </div>
+          <div class="countdown-item">
+            <span id="minutes"></span>
+            <span>Minutes</span>
+          </div>
+          <div class="countdown-item">
+            <span id="seconds"></span>
+            <span>Seconds</span>
+        </div>
+      </div>
+          <p>Hurry up! Offer ends in:</p>
+        </div>
+    </div>
+  </div>
+</section>
+<style>
+  .countdown-timer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .countdown-item {
+    margin-right: 20px;
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  .cta-btn {
+    color: #fff;
+    border: 2px solid #fff;
+    font-weight: bold;
+    font-size: 18px;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  }
+
+  .cta-btn:hover {
+    background-color: #ff9900; /* Darker orange on hover */
+    color: #ffffff; /* White text on hover */
+  }
+</style>
+<!-- Special Offers Section -->
+<section class="special-offers">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card">
+          <img src="off1.webp" class="card-img-top" alt="Offer 1 Image">
+          <div class="card-body">
+            <h5 class="card-title">Special Offer 1</h5>
+            <p class="card-text">Book your parking spot in advance and enjoy exclusive discounts. Save money and secure your spot hassle-free</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <img src="off2.jpg" class="card-img-top" alt="Offer 2 Image">
+          <div class="card-body">
+            <h5 class="card-title">Special Offer 2</h5>
+            <p class="card-text">Unlock special rates and promotions and make the most of your weekend with discounted parking</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <img src="off3.jpg" class="card-img-top" alt="Offer 3 Image">
+          <div class="card-body">
+            <h5 class="card-title">Special Offer 3</h5>
+            <p class="card-text"> Save more when you book multiple parking spots at once. Enjoy convenience and savings on all your parking needs.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Custom CSS for hover effects -->
+<style>
+  .card:hover {
+    transform: scale(1.05); /* Increase size on hover */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth transition */
+  }
+</style>
+<!-- Date and Time Selection Form -->
+<section class="date-time-selection">
+  <div class="container">
+    <h2>Booking Date and Time Selection</h2>
+    <form id="reservationForm">
+      <div class="form-group">
+        <label for="entryDate">Entry Date:</label>
+        <input type="date" id="entryDate" name="entryDate" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="entryTime">Entry Time:</label>
+        <input type="time" id="entryTime" name="entryTime" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="exitDate">Exit Date:</label>
+        <input type="date" id="exitDate" name="exitDate" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="exitTime">Exit Time:</label>
+        <input type="time" id="exitTime" name="exitTime" class="form-control" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Search Availability</button>
+    </form>
+  </div>
+</section>
+
+<div class="reservation-section">
+  <h2>Reservation Details</h2>
+  <div class="input-group mb-3">
+    <span class="input-group-text">Duration</span>
+    <input type="number" id="durationInput" class="form-control" placeholder="Enter hours" aria-label="Duration in hours" aria-describedby="basic-addon2" min="1" required>
+    <span class="input-group-text" id="basic-addon2">Hours</span>
+  </div>
+  <div class="form-check mb-3">
+    <input class="form-check-input" type="checkbox" value="" id="extendCheckbox">
+    <label class="form-check-label" for="extendCheckbox">Extend parking time if needed</label>
+  </div>
+  <div id="extendSection" style="display: none;">
+    <div class="input-group mb-3">
+      <span class="input-group-text">Extension Duration</span>
+      <input type="number" id="extendHoursInput" class="form-control" placeholder="Hours" aria-label="Extension hours" aria-describedby="basic-addon3" min="0">
+      <span class="input-group-text" id="basic-addon3">Hours</span>
+      <input type="number" id="extendMinutesInput" class="form-control" placeholder="Minutes" aria-label="Extension minutes" aria-describedby="basic-addon4" min="0" max="59">
+      <span class="input-group-text" id="basic-addon4">Minutes</span>
+    </div>
+  </div>
+  <button type="button" class="btn btn-primary" id="calculatePriceBtn">Calculate Price</button>
+  <div id="priceResult" class="mt-3"></div>
+</div>
+<style>
+.reservation-section {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+#priceResult {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+</style>
+<!-- User Information Display Section -->
+<section class="user-information">
+  <div class="container">
+    <h2>User Information</h2>
+    <!-- Search and Filter Options -->
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <input type="text" class="form-control" id="searchInput" placeholder="Search by name, email, etc.">
+      </div>
+      <div class="col-md-6">
+        <div class="btn-group float-right" role="group" aria-label="Sorting Options">
+          <button type="button" class="btn btn-secondary" data-sort="name">Sort by Name</button>
+          <button type="button" class="btn btn-secondary" data-sort="registration">Sort by Registration Date</button>
+        </div>
+      </div>
+    </div>
+    <!-- User Table -->
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Contact Number</th>
+            <th>Registration Status</th>
+            <th>Last Login</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Sample User Data (Replace with dynamic data from backend) -->
+          <tr>
+            <td>John Doe</td>
+            <td>johndoe@example.com</td>
+            <td>123-456-7890</td>
+            <td><span class="badge badge-success">Approved</span></td>
+            <td>2023-03-15 10:30 AM</td>
+            <td>
+              <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#userDetailsModal">View Details</button>
+              <!-- Add more action buttons if needed -->
+            </td>
+          </tr>
+          <!-- Add more rows for additional users -->
+        </tbody>
+      </table>
+    </div>
+    <!-- Pagination -->
+    <nav aria-label="User Page Navigation">
+      <ul class="pagination justify-content-center">
+        <li class="page-item disabled">
+          <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+        </li>
+        <!-- Sample Pagination (Replace with dynamic pagination based on backend data) -->
+        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <!-- Add more page numbers if needed -->
+        <li class="page-item">
+          <a class="page-link" href="#">Next</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</section>
+
+<!-- User Details Modal -->
+<div class="modal fade" id="userDetailsModal" tabindex="-1" role="dialog" aria-labelledby="userDetailsModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="userDetailsModalLabel">User Details</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- User Details Content Goes Here (Replace with dynamic content) -->
+        <p><strong>Name:</strong> John Doe</p>
+        <p><strong>Email:</strong> johndoe@example.com</p>
+        <p><strong>Contact Number:</strong> 123-456-7890</p>
+        <p><strong>Registration Status:</strong> <span class="badge badge-success">Approved</span></p>
+        <p><strong>Last Login:</strong> 2023-03-15 10:30 AM</p>
+        <!-- Add more user details as needed -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <!-- Add more action buttons in the modal footer if needed -->
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Vehicle Details and User Information Form with Creative Design -->
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-lg-6">
+      <div class="card shadow p-3 mb-5 bg-white rounded">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6">
+              <!-- Vehicle Details Form -->
+              <h5 class="card-title text-center mb-4">Enter Vehicle Details</h5>
+              <form id="vehicleDetailsForm" class="was-validated">
+                <div class="form-group">
+                  <input type="text" id="make" name="make" class="form-control form-control-lg" placeholder="Vehicle Make" required>
+                </div>
+                <div class="form-group">
+                  <input type="text" id="model" name="model" class="form-control form-control-lg" placeholder="Vehicle Model" required>
+                </div>
+                <div class="form-group">
+                  <input type="number" id="year" name="year" class="form-control form-control-lg" placeholder="Vehicle Year" min="1900" max="2099" required>
+                </div>
+                <div class="form-group">
+                  <input type="text" id="color" name="color" class="form-control form-control-lg" placeholder="Vehicle Color" required>
+                </div>
+                <div class="form-group">
+                  <input type="text" id="licensePlate" name="licensePlate" class="form-control form-control-lg" placeholder="License Plate" required>
+                </div>
+                <!-- Add other vehicle details input fields here -->
+              </form>
+            </div>
+            <div class="col-md-6">
+              <!-- User Information Form -->
+              <h5 class="card-title text-center mb-4">Enter User Information</h5>
+              <form id="userInfoForm" class="was-validated">
+                <div class="form-group">
+                  <input type="text" id="name" name="name" class="form-control form-control-lg" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                  <input type="tel" id="contact" name="contact" class="form-control form-control-lg" placeholder="Contact Number" pattern="[0-9]{10}" required>
+                </div>
+                <div class="form-group">
+                  <input type="email" id="email" name="email" class="form-control form-control-lg" placeholder="Email Address" required>
+                </div>
+                <div class="form-group">
+                  <textarea id="address" name="address" class="form-control form-control-lg" placeholder="Address" required></textarea>
+                </div>
+                <div class="form-group">
+                  <input type="text" id="vehicleType" name="vehicleType" class="form-control form-control-lg" placeholder="Vehicle Type" required>
+                </div>
+                <div class="form-group">
+                  <input type="text" id="licenseNumber" name="licenseNumber" class="form-control form-control-lg" placeholder="License Number" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg btn-block">Confirm Reservation</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Custom CSS for form styling -->
+<style>
+  .card {
+    border: none;
+  }
+
+  .form-control {
+    border-radius: 25px;
+    border-color: #ddd;
+  }
+
+  .form-control:focus {
+    border-color: #70c745;
+    box-shadow: 0 0 0 0.2rem rgba(112, 199, 69, 0.25);
+  }
+
+  .btn-primary {
+    background-color: #70c745;
+    border-color: #70c745;
+    border-radius: 25px;
+  }
+
+  .btn-primary:hover {
+    background-color: #64b53e;
+    border-color: #64b53e;
+  }
+
+  .parking-spot {
+    width: 100%;
+    height: 100px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .parking-spot:hover {
+    transform: scale(1.05);
+  }
+
+  .parking-spot svg {
+    width: 60px;
+    height: 60px;
+  }
+
+  /* Custom styling for tooltips/popovers content */
+  .popover {
+    max-width: 300px;
+    background-color: #fff;
+    color: #333;
+  }
+
+  .popover-header {
+    background-color: #70c745;
+    color: #fff;
+    font-weight: bold;
+  }
+
+  .popover-body {
+    padding: 10px;
+  }
+
+  .reserve-btn {
+    margin-top: 10px;
+  }
+</style>
+<!-- Bootstrap Carousel Section -->
+<section id="testimonials" class="section">
+  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src=".jpg" class="d-block w-100" alt="Testimonial 1">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Happy Customer</h5>
+          <p>"The parking reservation system made my city trips hassle-free. Highly recommended!"</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src=".avif" class="d-block w-100" alt="Testimonial 2">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Satisfied User</h5>
+          <p>"I always find available parking spots quickly and easily with this platform."</p>
+        </div>
+      </div>
+      <!-- Add more carousel items as needed -->
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</section>
+<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <h3>Contact Us</h3>
+        <ul class="contact-info">
+          <li><i class="fas fa-phone-alt"></i> Phone: +1-123-456-7890</li>
+          <li><i class="fas fa-envelope"></i> Email: info@example.com</li>
+          <li><i class="fas fa-map-marker-alt"></i> 123 Street Name, City, Country</li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h3>Quick Links</h3>
+        <ul class="quick-links">
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="faqs.html">FAQs</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h3>Follow Us</h3>
+        <ul class="social-icons">
+          <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+          <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+          <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+          <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+        </ul>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-md-6">
+        <p>&copy; 2024 Your Company. All rights reserved. | <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a></p>
+      </div>
+      <div class="col-md-6 text-end">
+        <h3>Newsletter Signup</h3>
+        <form action="#" method="post" class="newsletter-form">
+          <input type="email" name="email" placeholder="Enter your email" required>
+          <button type="submit" class="btn btn-primary">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  /* Footer Styles */
+  .footer {
+    background-color: #37517e;
+    color: #fff;
+    padding: 50px 0;
+  }
+
+  .footer h3 {
+    color: #fff;
+  }
+
+  .contact-info li,
+  .quick-links li {
+    margin-bottom: 10px;
+  }
+
+  .social-icons li {
+    display: inline-block;
+    margin-right: 10px;
+  }
+
+  .social-icons a {
+    color: #fff;
+    font-size: 20px;
+  }
+
+  .newsletter-form {
+    margin-top: 20px;
+  }
+
+  .newsletter-form input[type="email"] {
+    width: 70%;
+    padding: 8px;
+    border: 1px solid #fff;
+    border-radius: 5px;
+  }
+
+  .newsletter-form button {
+    padding: 8px 20px;
+    background-color: #70c745;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+  }
+
+  .newsletter-form button:hover {
+    background-color: #64b53e;
+  }
+
+  /* Media Queries for Responsive Footer */
+  @media (max-width: 768px) {
+    .footer {
+      padding: 30px 0;
+    }
+
+    .newsletter-form input[type="email"] {
+      width: 100%;
+    }
+
+    .col-md-6.text-end {
+      margin-top: 20px;
+    }
+  }
+</style>
+
+<!-- Bootstrap JS and Popper.js for tooltips/popovers -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Initialize tooltips/popovers -->
+<script>
+  $(document).ready(function () {
+    $('[data-toggle="popover"]').popover();
+  });
+
+  // Example function for reserving a spot (replace with actual reservation logic)
+  $(document).on('click', '.reserve-btn', function () {
+    alert('Spot reserved successfully!');
+  });
+
+  //JavaScript for form validation and submission  
+  // Example JavaScript for form validation and submission (replace with actual logic)
+
+  $(document).ready(function () {
+    $('#vehicleDetailsForm').submit(function (event) {
+      if ($('#vehicleDetailsForm')[0].checkValidity()) {
+        // Perform form submission logic here
+        alert('Vehicle details submitted successfully!');
+      }
+      event.preventDefault();
+      event.stopPropagation();
+      $('#vehicleDetailsForm').addClass('was-validated');
+    });
+
+    $('#userInfoForm').submit(function (event) {
+      if ($('#userInfoForm')[0].checkValidity()) {
+        // Perform form submission logic here
+        alert('User information submitted successfully!');
+      }
+      event.preventDefault();
+      event.stopPropagation();
+      $('#userInfoForm').addClass('was-validated');
+    });
+  });
+  
+  //Smooth Scrolling Script 
+
+  $(document).ready(function() {
+    // Smooth scrolling for navigation links
+    $('a[href^="#"]').on('click', function(event) {
+      var target = $(this.getAttribute('href'));
+      if (target.length) {
+        event.preventDefault();
+        $('html, body').stop().animate({
+          scrollTop: target.offset().top
+        }, 1000); // Adjust the duration as needed
+      }
+    });
+  });
+
+  // Set the date and time for the countdown
+  var countdownDate = new Date("March 31, 2024 23:59:59").getTime();
+
+  // Update the countdown every 1 second
+  var countdownInterval = setInterval(function() {
+    var now = new Date().getTime();
+    var distance = countdownDate - now;
+
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById("days").innerHTML = days;
+    document.getElementById("hours").innerHTML = hours;
+    document.getElementById("minutes").innerHTML = minutes;
+    document.getElementById("seconds").innerHTML = seconds;
+
+    if (distance < 0) {
+      clearInterval(countdownInterval);
+      document.getElementById("countdown").innerHTML = "Offer expired";
+    }
+  }, 1000); // Update every 1 second (1000 milliseconds)
+
+  $(document).ready(function() {
+    $('#extendCheckbox').change(function() {
+      if ($(this).is(':checked')) {
+        $('#extendSection').slideDown();
+      } else {
+        $('#extendSection').slideUp();
+      }
+    });
+
+    $('#calculatePriceBtn').click(function() {
+      let duration = parseInt($('#durationInput').val());
+      let extendChecked = $('#extendCheckbox').prop('checked');
+      let extendHours = parseInt($('#extendHoursInput').val()) || 0;
+      let extendMinutes = parseInt($('#extendMinutesInput').val()) || 0;
+
+      let totalPrice = duration * 10; // Example base price per hour
+      if (extendChecked) {
+        totalPrice += (extendHours * 10) + (extendMinutes * (10 / 60)); // Additional cost for extending parking time
+      }
+
+      $('#priceResult').text('Estimated Price: $' + totalPrice.toFixed(2));
+    });
+  });
+
+  // Sample user data (replace with actual data)
+  const users = [
+    { name: 'John Doe', email: 'john@example.com', contact: '123-456-7890', vehicle: 'Toyota Corolla', status: 'pending' },
+    { name: 'Jane Smith', email: 'jane@example.com', contact: '987-654-3210', vehicle: 'Honda Civic', status: 'approved' },
+    // Add more user objects as needed
+  ];
+
+  // Function to display user data in the table
+  function displayUsers(usersList) {
+    const userList = document.getElementById('userList');
+    userList.innerHTML = '';
+
+    usersList.forEach(user => {
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>${user.name}</td>
+        <td>${user.email}</td>
+        <td>${user.contact}</td>
+        <td>${user.vehicle}</td>
+        <td><span class="badge bg-${user.status === 'approved' ? 'success' : user.status === 'pending' ? 'warning' : 'danger'}">${user.status}</span></td>
+        <td>
+          <button type="button" class="btn btn-primary btn-sm">View Details</button>
+          <!-- Add other action buttons as needed -->
+        </td>
+      `;
+      userList.appendChild(row);
+    });
+  }
+
+  // Initial display of user data
+  displayUsers(users);
+
+  // Search functionality
+  document.getElementById('searchInput').addEventListener('input', function() {
+    const searchValue = this.value.toLowerCase();
+    const filteredUsers = users.filter(user =>
+      user.name.toLowerCase().includes(searchValue) ||
+      user.email.toLowerCase().includes(searchValue) ||
+      user.status.toLowerCase().includes(searchValue)
+    );
+    displayUsers(filteredUsers);
+  });
+
+  // Pagination (assuming 5 users per page)
+  const pageSize = 5;
+  const totalPages = Math.ceil(users.length / pageSize);
+  const pagination = document.getElementById('pagination');
+  for (let i = 1; i <= totalPages; i++) {
+    const li = document.createElement('li');
+    li.classList.add('page-item');
+    li.innerHTML = `<a class="page-link" href="#">${i}</a>`;
+    li.addEventListener('click', function() {
+      const start = (i - 1) * pageSize;
+      const end = start + pageSize;
+      const usersPage = users.slice(start, end);
+      displayUsers(usersPage);
+    });
+    pagination.appendChild(li);
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    // Get reference to elements
+    const searchInput = document.getElementById('searchInput');
+    const table = document.querySelector('.table');
+
+    // Search functionality
+    searchInput.addEventListener('input', function (event) {
+      const searchQuery = event.target.value.toLowerCase();
+      const rows = table.querySelectorAll('tbody tr');
+
+      rows.forEach(row => {
+        const name = row.querySelector('td:first-child').textContent.toLowerCase();
+        const email = row.querySelector('td:nth-child(2)').textContent.toLowerCase();
+        if (name.includes(searchQuery) || email.includes(searchQuery)) {
+          row.style.display = '';
+        } else {
+          row.style.display = 'none';
+        }
+      });
+    });
+
+    // Sorting functionality
+    const sortButtons = document.querySelectorAll('[data-sort]');
+    sortButtons.forEach(button => {
+      button.addEventListener('click', function () {
+        const sortBy = this.dataset.sort;
+        const sortOrder = this.dataset.order || 'asc';
+        const rows = Array.from(table.querySelectorAll('tbody tr'));
+
+        rows.sort((a, b) => {
+          const valueA = a.querySelector(`td[data-sort="${sortBy}"]`).textContent;
+          const valueB = b.querySelector(`td[data-sort="${sortBy}"]`).textContent;
+          if (sortOrder === 'asc') {
+            return valueA.localeCompare(valueB);
+          } else {
+            return valueB.localeCompare(valueA);
+          }
+        });
+
+        // Update table rows
+        const tbody = table.querySelector('tbody');
+        tbody.innerHTML = '';
+        rows.forEach(row => tbody.appendChild(row));
+
+        // Toggle sort order
+        this.dataset.order = sortOrder === 'asc' ? 'desc' : 'asc';
+      });
+    });
+
+    // Pagination (Sample code for demonstration)
+    const paginationLinks = document.querySelectorAll('.pagination a.page-link');
+    paginationLinks.forEach(link => {
+      link.addEventListener('click', function (event) {
+        event.preventDefault();
+        const pageNumber = parseInt(this.textContent);
+        // Fetch and display data for the selected page from backend
+        // Replace this with your actual pagination logic
+        console.log(`Fetching data for page ${pageNumber}`);
+      });
+    });
+
+    // Initialize Bootstrap tooltips
+    $('[data-toggle="tooltip"]').tooltip();
+  });
+
+  // Form Validation Script
+  // Add your form validation code here
+
+  // Confirmation Modal Script
+  document.getElementById('confirmReservationBtn').addEventListener('click', function() {
+    // Perform form submission or confirmation action here
+    $('#confirmationModal').modal('hide'); // Hide modal after confirmation
+  }); 
+
+</script>
+</body>
+</html>

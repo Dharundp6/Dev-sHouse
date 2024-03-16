@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Parking Management System - Vehicle Registration</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+  
+
+  <!-- Custom CSS for floating animation -->
+  <style>
+    /* Animation for floating effect */
+    @keyframes floating {
+      0% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px); /* Adjust the distance of floating */
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+
+    .floating {
+      animation-name: floating;
+      animation-duration: 3s; /* Adjust the duration of the animation */
+      animation-iteration-count: infinite;
+      animation-timing-function: ease-in-out;
+    }
+
+    /* Additional styles for the header section image */
+    .header-img {
+      max-width: 1250px; /* Increase the size of the image */
+      width: 200%;
+      margin: auto; /* Center the image horizontally */
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center">
+
+      <!-- Logo -->
+      <h1 class="logo me-auto"><a href="home1.html">Parking System</a></h1>
+
+      <!-- Navigation Menu -->
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="home1.html#hero">Home</a></li>
+          <li><a class="nav-link scrollto" href="about.html">About Us</a></li>
+          <li><a class="nav-link scrollto" href="help.html">Help/Support</a></li>
+          <li><a class="getstarted scrollto" href="login.html">Login</a></li>
+          <li><a class="getstarted scrollto" href="signup.html">Signup</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex align-items-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
+          <h1>Efficient Parking Management System</h1>
+          <h2>We provide automated solutions for seamless parking experiences</h2>
+          <div class="d-flex justify-content-center justify-content-lg-start">
+            <a href="#features" class="btn-get-started scrollto">Explore Features</a>
+          </div>
+        </div>
+        <div class="col-md-3 text-center">
+          <img src="hero2.webp" alt="Profile Picture" class="img-fluid header-img floating" style="border-radius: 5px;">
+        </div>
+      </div>
+    </div>
+  </section><!-- End Hero -->
+
+  <!-- User Information Section -->
+<section class="user-info">
+  <div class="container">
+    <div class="row align-items-center">
+      <!-- Profile Picture -->
+      <div class="col-md-3 text-center">
+        <img src="user1.avif" alt="Profile Picture" class="img-fluid" style="max-width: 150px; border-radius: 5px;">
+      </div>
+      <!-- User Name and Basic Information -->
+      <div class="col-md-9">
+        <h3 class="mb-3" id="userName">User's Name</h3>
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <p><i class="bi bi-envelope-fill me-2"></i>Email: <span id="userEmail">user@example.com</span></p>
+            <p><i class="bi bi-telephone-fill me-2"></i>Contact Number: <span id="userContact">+1234567890</span></p>
+          </div>
+          <!-- Add more basic information here -->
+        </div>
+        <!-- Edit Profile Option -->
+        <button class="btn btn-primary btn-edit-profile" onclick="editProfile()">Edit Profile</button>
+        <button class="btn btn-success btn-save-changes" onclick="saveChanges()" style="display: none;">Save Changes</button>
+      </div>
+    </div>
+  </div>
+</section><!-- End User Information Section -->
+
+<div class="container">
+  <h2 class="my-4">Vehicle Registration Form</h2>
+  <form id="vehicleRegistrationForm">
+    <div class="form-group">
+      <label for="vehicleMake">Vehicle Make</label>
+      <input type="text" class="form-control" id="vehicleMake" required>
+      <div class="invalid-feedback">Please enter the vehicle make.</div>
+    </div>
+    <div class="form-group">
+      <label for="vehicleModel">Vehicle Model</label>
+      <input type="text" class="form-control" id="vehicleModel" required>
+      <div class="invalid-feedback">Please enter the vehicle model.</div>
+    </div>
+    <div class="form-group">
+      <label for="vehicleYear">Vehicle Year</label>
+      <input type="number" class="form-control" id="vehicleYear" required>
+      <div class="invalid-feedback">Please enter the vehicle year.</div>
+    </div>
+    <div class="form-group">
+      <label for="vehicleColor">Vehicle Color</label>
+      <input type="text" class="form-control" id="vehicleColor" required>
+      <div class="invalid-feedback">Please enter the vehicle color.</div>
+    </div>
+    
+    <div class="form-group">
+      <label for="vehicleType">Vehicle Type</label>
+      <select class="form-control" id="vehicleType" required onchange="toggleSubcategories()">
+        <option value="">Select Vehicle Type</option>
+        <option value="sedan">Sedan</option>
+        <option value="mini-suv-suv">MiniSUV & SUV</option>
+        <option value="hatchbacks">Hatchbacks</option>
+        <option value="mpv">MPV</option>
+      </select>
+      <div class="invalid-feedback">Please select the vehicle type.</div>
+    </div>
+    
+    <div class="form-group" id="subcategories" style="display: none;">
+      <label for="subCategory">Sub Category</label>
+      <select class="form-control" id="subCategory">
+        <!-- Subcategories options will be dynamically populated based on the selected vehicle type -->
+      </select>
+    </div>
+    
+    <div class="form-group">
+      <label for="vehicleVIN">VIN (Vehicle Identification Number)</label>
+      <input type="text" class="form-control" id="vehicleVIN" required>
+      <div class="invalid-feedback">Please enter the vehicle VIN.</div>
+    </div>
+    <div class="form-group">
+      <label for="licensePlate">License Plate Number</label>
+      <input type="text" class="form-control" id="licensePlate" required>
+      <div class="invalid-feedback">Please enter the license plate number.</div>
+    </div>
+    <div class="form-group">
+      <label for="vehicleDocuments">Upload Vehicle Documents</label>
+      <input type="file" class="form-control-file" id="vehicleDocuments">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+
+<!-- Additional Information Section -->
+<section class="additional-info">
+  <div class="container">
+    <h2 class="mb-4">Additional Information</h2>
+    <form id="additionalInfoForm">
+      <!-- Vehicle Details -->
+      <div class="mb-3">
+        <label for="vehicleDetails" class="form-label">Vehicle Details</label>
+        <input type="text" class="form-control" id="vehicleDetails" placeholder="Enter vehicle details">
+      </div>
+      <!-- Address Information -->
+      <div class="mb-3">
+        <label for="address" class="form-label">Address</label>
+        <textarea class="form-control" id="address" rows="3" placeholder="Enter address"></textarea>
+      </div>
+      <!-- Insurance Information -->
+      <div class="mb-3">
+        <label for="insuranceInfo" class="form-label">Insurance Information</label>
+        <input type="text" class="form-control" id="insuranceInfo" placeholder="Enter insurance information">
+      </div>
+      <!-- Emergency Contact -->
+      <div class="mb-3">
+        <label for="emergencyContact" class="form-label">Emergency Contact</label>
+        <input type="text" class="form-control" id="emergencyContact" placeholder="Enter emergency contact information">
+      </div>
+      <button type="submit" class="btn btn-primary">Save Information</button>
+    </form>
+  </div>
+</section>
+
+  <div class="d-flex align-items-center mt-3">
+    <i class="bi bi-info-circle me-2"></i>
+    <span id="additionalInfoToggle" class="text-primary cursor-pointer">Additional Information</span>
+  </div>
+  <!-- Additional Information Form (Initially Hidden) -->
+  <form id="additionalInfoForm" class="needs-validation d-none" novalidate>
+    <!-- Additional Vehicle Details -->
+    <h3>Additional Vehicle Details</h3>
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label for="mileage">Mileage</label>
+        <input type="number" class="form-control" id="mileage" name="mileage" required>
+        <div class="invalid-feedback">Please enter the vehicle mileage.</div>
+      </div>
+      <!-- Add more vehicle details fields here -->
+    </div>
+
+    <!-- Address Information -->
+<h3>Address Information</h3>
+<div class="row">
+  <div class="col-md-6 mb-3">
+    <label for="streetAddress">Street Address</label>
+    <input type="text" class="form-control" id="streetAddress" name="streetAddress" required>
+    <div class="invalid-feedback">Please enter the street address.</div>
+  </div>
+  <div class="col-md-6 mb-3">
+    <label for="city">City</label>
+    <input type="text" class="form-control" id="city" name="city" required>
+    <div class="invalid-feedback">Please enter the city.</div>
+  </div>
+  <!-- Add more address fields as needed -->
+</div>
+
+<!-- Insurance Information -->
+<h3>Insurance Information</h3>
+<div class="row">
+  <div class="col-md-6 mb-3">
+    <label for="insuranceCompany">Insurance Company</label>
+    <input type="text" class="form-control" id="insuranceCompany" name="insuranceCompany" required>
+    <div class="invalid-feedback">Please enter the insurance company name.</div>
+  </div>
+  <div class="col-md-6 mb-3">
+    <label for="policyNumber">Policy Number</label>
+    <input type="text" class="form-control" id="policyNumber" name="policyNumber" required>
+    <div class="invalid-feedback">Please enter the policy number.</div>
+  </div>
+  <!-- Add more insurance fields as needed -->
+</div>
+
+<!-- Emergency Contact -->
+<h3>Emergency Contact</h3>
+<div class="row">
+  <div class="col-md-6 mb-3">
+    <label for="emergencyName">Contact Name</label>
+    <input type="text" class="form-control" id="emergencyName" name="emergencyName" required>
+    <div class="invalid-feedback">Please enter the emergency contact name.</div>
+  </div>
+  <div class="col-md-6 mb-3">
+    <label for="emergencyPhone">Contact Phone</label>
+    <input type="tel" class="form-control" id="emergencyPhone" name="emergencyPhone" required>
+    <div class="invalid-feedback">Please enter the emergency contact phone number.</div>
+  </div>
+  <!-- Add more emergency contact fields as needed -->
+</div>
+
+    <!-- Terms and Conditions Checkbox -->
+    <div class="form-check mb-3">
+      <input class="form-check-input" type="checkbox" value="" id="termsCheckbox" required>
+      <label class="form-check-label" for="termsCheckbox">Agree to Terms and Conditions</label>
+      <div class="invalid-feedback">You must agree to the terms and conditions.</div>
+    </div>
+
+    <!-- Save Changes Button -->
+    <button class="btn btn-primary" type="submit">Save Changes</button>
+  </form>
+</div>
+
+<!-- Modal for Terms and Conditions -->
+<div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="termsModalLabel">Terms and Conditions</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Terms and Conditions content here -->
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  /* Container style for the Vehicle Registration Form section */
+  .vehicle-registration-container {
+    background-color: #f8f9fa; /* Light background color */
+    padding: 30px; /* Add padding for spacing */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
+  }
+
+  /* Form styles */
+  .vehicle-registration-form {
+    max-width: 600px; /* Limit the form width for readability */
+    margin: 0 auto; /* Center the form horizontally */
+  }
+
+  /* Form label styles */
+  .vehicle-registration-form label {
+    font-weight: bold;
+  }
+
+  /* Input field styles */
+  .vehicle-registration-form input[type="text"],
+  .vehicle-registration-form input[type="number"],
+  .vehicle-registration-form select {
+    width: 100%; /* Full width input fields */
+    padding: 10px; /* Add padding for spacing */
+    margin-bottom: 15px; /* Space between input fields */
+    border: 1px solid #ccc; /* Border color */
+    border-radius: 5px; /* Rounded corners */
+    box-sizing: border-box; /* Include padding and border in element's total width */
+  }
+
+  /* Submit button style */
+  .vehicle-registration-form button[type="submit"] {
+    background-color: #007bff; /* Blue background color for the button */
+    color: #fff; /* White text color */
+    border: none; /* Remove button border */
+    padding: 10px 20px; /* Add padding for button size */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Cursor style on hover */
+    transition: background-color 0.3s ease-in-out; /* Smooth hover effect */
+  }
+
+  /* Button hover effect */
+  .vehicle-registration-form button[type="submit"]:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+  }
+</style>
+<form class="vehicle-registration-form" id="vehicleRegistrationForm" action="/submit_form" method="post">
+  <!-- Your form fields here -->
+
+  <!-- Submit button -->
+  <button type="submit" onclick="validateForm(event)">Submit</button>
+</form>
+
+<!-- User Profile Page - Vehicle Section -->
+<!-- User Profile Page - Registered Vehicles Section -->
+<section class="registered-vehicles-section">
+  <div class="container">
+    <div class="row">
+      <section class="vehicle-section">
+        <div class="container">
+          <h2 class="mb-4">Registered Vehicles</h2>
+          <div class="row">
+            <!-- Vehicle Card - Example 2 -->
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card">
+                <div class="row g-0">
+                  <!-- Image Section -->
+                  <div class="col-md-4">
+                    <img src="c1.jpeg" class="img-fluid rounded-start" alt="Vehicle Image">
+                  </div>
+                  <!-- Text Section -->
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <h5 class="card-title">Vehicle Model 2</h5>
+                      <p class="card-text">License Plate: XYZ789</p>
+                      <p class="card-text">Make: Brand B</p>
+                      <p class="card-text">Color: Blue</p>
+                      <!-- Additional vehicle details here -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card">
+                <div class="row g-0">
+                  <!-- Image Section -->
+                  <div class="col-md-4">
+                    <img src="c2.webp" class="img-fluid rounded-start" alt="Vehicle Image">
+                  </div>
+                  <!-- Text Section -->
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <h5 class="card-title">Vehicle Model 3</h5>
+                      <p class="card-text">License Plate: VIC789</p>
+                      <p class="card-text">Make: Brand C</p>
+                      <p class="card-text">Color: White</p>
+                      <!-- Additional vehicle details here -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card">
+                <div class="row g-0">
+                  <!-- Image Section -->
+                  <div class="col-md-4">
+                    <img src="c3.webp" class="img-fluid rounded-start" alt="Vehicle Image">
+                  </div>
+                  <!-- Text Section -->
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <h5 class="card-title">Vehicle Model 4</h5>
+                      <p class="card-text">License Plate: ABC123</p>
+                      <p class="card-text">Make: Brand D</p>
+                      <p class="card-text">Color: Red</p>
+                      <!-- Additional vehicle details here -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>            
+            <!-- Add more vehicle cards as needed --> 
+          </div>
+        </div>
+      </section>
+      
+</section>
+<style>
+  /* User Profile Page Styles */
+
+  /* Registered Vehicles Section */
+  .registered-vehicles-section {
+    padding: 50px 0; /* Adjust padding as needed */
+    background-color: #f9f9f9; /* Light background color */
+  }
+
+  /* Vehicle Card Styles */
+  .card {
+    border: 1px solid #ddd; /* Add a border around each card */
+    border-radius: 10px; /* Rounded corners for the cards */
+    transition: transform 0.3s ease-in-out; /* Smooth transition on hover */
+  }
+
+  .card:hover {
+    transform: scale(1.05); /* Enlarge the card on hover */
+  }
+
+  .card-body {
+    padding: 20px; /* Padding inside the card body */
+  }
+
+  .card-title {
+    font-size: 1.5rem; /* Larger font size for the vehicle model */
+    font-weight: bold; /* Bold font weight for the title */
+    margin-bottom: 10px; /* Bottom margin below the title */
+  }
+
+  .card-text {
+    font-size: 1rem; /* Normal font size for text */
+    margin-bottom: 5px; /* Bottom margin for text lines */
+  }
+
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .card {
+      margin-bottom: 20px; /* Add space between cards on smaller screens */
+    }
+  }
+</style>
+</head>
+<div class="container">
+    <h1 class="mt-5">Vehicle Registration Form</h1>
+    <form id="registrationForm">
+      <div class="form-group">
+        <label for="vehicleModel">Vehicle Model:</label>
+        <input type="text" class="form-control" id="vehicleModel" required>
+      </div>
+      <div class="form-group">
+        <label for="registrationNumber">Registration Number:</label>
+        <input type="text" class="form-control" id="registrationNumber" required>
+      </div>
+      <!-- Add more form fields as needed -->
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <div id="confirmationMessage" class="alert alert-success d-none mt-3" role="alert">
+      Registration successful! <a href="profile.html">Go to Profile</a>
+    </div>
+  </div>
+
+    <section class="legal-compliance">
+      <div class="container">
+        <h2>Legal Compliance</h2>
+        <div class="disclaimers">
+          <h3>Disclaimers</h3>
+          <ul>
+            <li>The information provided on this registration page is for reference purposes only. We do not guarantee the accuracy or completeness of the information regarding vehicle details.</li>
+            <li>This platform is intended solely for vehicle registration purposes and must not be used for any illegal or prohibited activities.</li>
+          </ul>
+        </div>
+        <div class="terms-of-service">
+          <h3>Terms of Service (ToS)</h3>
+          <p>By proceeding with the registration process, you agree to abide by our <a href="terms-of-service.html" target="_blank">Terms of Service</a>. Please review the terms carefully before proceeding.</p>
+        </div>
+        <div class="privacy-policy">
+          <h3>Privacy Policy</h3>
+          <p>We are committed to protecting your privacy. Please review our <a href="privacy.html" target="_blank">Privacy Policy</a> to understand how we collect, use, and protect your personal and vehicle-related information.</p>
+        </div>
+        <div class="regulatory-compliance">
+          <h3>Regulatory Compliance</h3>
+          <p>Our platform complies with all relevant laws and regulations governing vehicle registration and data protection. We adhere to local traffic laws and regulations, as well as data protection regulations such as GDPR and CCPA.</p>
+        </div>
+        <div class="liability-limitation">
+          <h3>Liability Limitation</h3>
+          <p>By using our registration services, you acknowledge and agree that our platform is not liable for any damages or losses incurred during the registration process. Please review our <a href="liability-disclaimer.html" target="_blank">Liability Disclaimer</a> for more details.</p>
+        </div>
+        <div class="user-agreement">
+          <label>
+            <input type="checkbox" required> I have read and agree to the Terms of Service and Privacy Policy.
+          </label>
+        </div>
+      </div>
+    </section>
+    <style>
+    /* Legal Compliance Section Styles */
+.legal-compliance {
+  background-color: #f8f9fa; /* Light background color */
+  padding: 50px 0; /* Padding around the section */
+}
+
+.legal-compliance h2 {
+  text-align: center; /* Center-align the heading */
+  margin-bottom: 40px; /* Bottom margin for spacing */
+}
+
+.legal-compliance .container {
+  max-width: 1200px; /* Maximum width for content */
+  margin: 0 auto; /* Center-align the content */
+}
+
+.legal-compliance h3 {
+  margin-bottom: 20px; /* Bottom margin for subheadings */
+}
+
+.legal-compliance ul {
+  list-style-type: disc; /* Use bullets for list items */
+  margin-left: 20px; /* Left margin for list items */
+  margin-bottom: 20px; /* Bottom margin for lists */
+}
+
+.legal-compliance p {
+  margin-bottom: 20px; /* Bottom margin for paragraphs */
+}
+
+.legal-compliance a {
+  color: #007bff; /* Link color */
+  text-decoration: none; /* Remove underline from links */
+  font-weight: bold; /* Bold font weight for links */
+}
+
+.legal-compliance a:hover {
+  text-decoration: underline; /* Underline links on hover */
+}
+
+.legal-compliance label {
+  display: block; /* Display checkbox label as block element */
+  margin-top: 20px; /* Top margin for checkbox label */
+}
+
+.legal-compliance input[type="checkbox"] {
+  margin-right: 10px; /* Right margin for checkbox input */
+}
+</style>
+</head>
+
+<style>
+  /* Specific styles for the feedback section */
+  .feedback-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+
+  .feedback-form .form-group {
+    margin-bottom: 15px;
+  }
+
+  .feedback-form label {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  .feedback-form input[type="text"],
+  .feedback-form input[type="email"],
+  .feedback-form textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+
+  .feedback-form button {
+    display: block;
+    margin-top: 10px;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 3px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+  }
+
+  .feedback-form button:hover {
+    background-color: #0056b3;
+  }
+</style>
+
+<!--Feedback Section-->
+<div class="container">
+  <h2>User Feedback Form</h2>
+  <form id="feedbackForm" class="feedback-form">
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+    </div>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+    </div>
+    <div class="form-group">
+      <label for="message">Message:</label>
+      <textarea id="message" name="message" rows="4" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit Feedback</button>
+  </form>
+</div>
+  
+  <!-- Bootstrap JS and dependencies (jQuery, Popper.js) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+<!-- JavaScript code -->
+<script> 
+  // Function to handle editing the profile
+  function editProfile() {
+    // Get the elements that need to be edited
+    const userName = document.getElementById('userName');
+    const userEmail = document.getElementById('userEmail');
+    const userContact = document.getElementById('userContact');
+
+    // Enable editing by converting text content to input fields
+    userName.innerHTML = `<input type="text" id="editName" value="${userName.textContent}" class="form-control">`;
+    userEmail.innerHTML = `<input type="email" id="editEmail" value="${userEmail.textContent}" class="form-control">`;
+    userContact.innerHTML = `<input type="tel" id="editContact" value="${userContact.textContent}" class="form-control">`;
+
+    // Show the "Save Changes" button and hide the "Edit Profile" button
+    document.querySelector('.btn-edit-profile').style.display = 'none';
+    document.querySelector('.btn-save-changes').style.display = 'inline-block';
+  }
+
+  // Function to handle saving the changes
+  function saveChanges() {
+    // Get the edited values from input fields
+    const editedName = document.getElementById('editName').value;
+    const editedEmail = document.getElementById('editEmail').value;
+    const editedContact = document.getElementById('editContact').value;
+
+    // Update the user information in the UI
+    document.getElementById('userName').textContent = editedName;
+    document.getElementById('userEmail').textContent = editedEmail;
+    document.getElementById('userContact').textContent = editedContact;
+
+    // Hide the "Save Changes" button and show the "Edit Profile" button
+    document.querySelector('.btn-edit-profile').style.display = 'inline-block';
+    document.querySelector('.btn-save-changes').style.display = 'none';
+  }
+  // Custom JavaScript for Form Validation 
+
+    document.addEventListener('DOMContentLoaded', function() {
+      var form = document.getElementById('vehicleRegistrationForm');
+
+      form.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        if (form.checkValidity()) {
+          // Form data is valid, you can proceed with form submission or other actions
+          alert('Form submitted successfully!');
+          // Replace alert with actual form submission logic
+        } else {
+          event.stopPropagation();
+          form.classList.add('was-validated');
+        }
+      }, false);
+
+      // Reset validation on input change
+      form.querySelectorAll('.form-control').forEach(function(input) {
+        input.addEventListener('input', function() {
+          if (input.checkValidity()) {
+            input.classList.remove('is-invalid');
+          } else {
+            input.classList.add('is-invalid');
+          }
+        });
+      });
+    });
+    // Custom JavaScript for Form Validation and Modal 
+    // JavaScript for enabling Bootstrap form validation
+  (function () {
+    'use strict'
+
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.querySelectorAll('.needs-validation')
+
+    // Loop over them and prevent submission
+    Array.prototype.slice.call(forms)
+      .forEach(function (form) {
+        form.addEventListener('submit', function (event) {
+          if (!form.checkValidity()) {
+            event.preventDefault()
+            event.stopPropagation()
+          }
+
+          form.classList.add('was-validated')
+        }, false)
+      })
+  })()
+
+  // JavaScript for showing Terms and Conditions modal
+  document.getElementById('termsCheckbox').addEventListener('click', function () {
+    if (this.checked) {
+      $('#termsModal').modal('show');
+    } else {
+      $('#termsModal').modal('hide');
+    }
+  });
+
+  // JavaScript for handling form submission and confirmation
+  document.getElementById('additionalInfoForm').addEventListener('submit', function (event) {
+    event.preventDefault(); // Prevent form submission for demo purposes
+    // Perform form validation and submission logic here
+    // Example: AJAX request to save form data
+    // On success, display confirmation modal or redirect to confirmation page
+    $('#confirmationModal').modal('show');
+  });
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const additionalInfoToggle = document.getElementById("additionalInfoToggle");
+    const additionalInfoForm = document.getElementById("additionalInfoForm");
+
+    additionalInfoToggle.addEventListener("click", function () {
+      additionalInfoForm.classList.toggle("d-none");
+    });
+  });
+
+  // Define the subcategories for each vehicle type
+// Define the subcategories for each vehicle type
+const subcategories = {
+    sedan: ["Maruti Suzuki Dzire", "Hyundai Verna", "Tata Motors Tigor", "Honda City", "Volkswagen Vento", "Skoda Rapid", "Toyota Camry"],
+    "mini-suv-suv": ["Maruti Suzuki Vitara Brezza", "Hyundai Venue", "Tata Motors Nexon", "Mahindra XUV300", "Volkswagen Taigun", "Kia Sonet"],
+    hatchbacks: ["Maruti Suzuki Alto", "Hyundai i10 Grand", "Tata Motors Tiago", "Volkswagen Polo", "Honda Jazz", "Toyota Glanza"],
+    mpv: ["Maruti Suzuki Ertiga", "Mahindra Scorpio", "Kia Carnival", "Toyota Innova Crysta"]
+    // Add more subcategories for other vehicle types
+  };
+
+  // Function to toggle and populate subcategories based on the selected vehicle type
+  function toggleSubcategories() {
+    const vehicleType = document.getElementById('vehicleType').value;
+    const subCategorySelect = document.getElementById('subCategory');
+    const subCategoryContainer = document.getElementById('subcategories');
+
+    // Clear existing options
+    subCategorySelect.innerHTML = '';
+
+    // If a valid vehicle type is selected, populate subcategories
+    if (vehicleType && subcategories.hasOwnProperty(vehicleType)) {
+      subcategories[vehicleType].forEach(subCategory => {
+        const option = document.createElement('option');
+        option.text = subCategory;
+        option.value = subCategory;
+        subCategorySelect.add(option);
+      });
+      subCategoryContainer.style.display = 'block'; // Show the subcategory dropdown
+    } else {
+      subCategoryContainer.style.display = 'none'; // Hide the subcategory dropdown if no valid type selected
+    }
+  }
+
+  function validateForm(event) {
+    event.preventDefault(); // Prevent form submission
+
+    // Get form input values
+    let vehicleType = document.getElementById('vehicleType').value;
+    let make = document.getElementById('make').value;
+    let model = document.getElementById('model').value;
+    // Add more input fields as needed
+
+    // Validate input fields
+    if (vehicleType === '') {
+      alert('Please select a vehicle type.');
+      return;
+    }
+
+    if (make.trim() === '') {
+      alert('Please enter the vehicle make.');
+      return;
+    }
+
+    if (model.trim() === '') {
+      alert('Please enter the vehicle model.');
+      return;
+    }
+
+    // Add more validation checks for other fields
+
+    // If all validations pass, submit the form
+    document.getElementById('vehicleRegistrationForm').submit();
+  }
+
+  // Function to handle form submission
+  document.getElementById('additionalInfoForm').addEventListener('submit', function (event) {
+    event.preventDefault(); // Prevent the default form submission
+    // Get values from form fields
+    const vehicleDetails = document.getElementById('vehicleDetails').value;
+    const address = document.getElementById('address').value;
+    const insuranceInfo = document.getElementById('insuranceInfo').value;
+    const emergencyContact = document.getElementById('emergencyContact').value;
+    // Perform further actions such as sending data to backend or updating UI
+    // For demonstration, log the values to console
+    console.log('Vehicle Details:', vehicleDetails);
+    console.log('Address:', address);
+    console.log('Insurance Information:', insuranceInfo);
+    console.log('Emergency Contact:', emergencyContact);
+    // You can add AJAX requests or other logic here to handle form data
+  });
+
+   // Function to fetch registered vehicles and display them in the profile page
+   function loadRegisteredVehicles() {
+    fetch('/api/user/vehicles', {
+      method: 'GET',
+      headers: {
+        'Authorization': 'Bearer YOUR_ACCESS_TOKEN' // Add authentication token if required
+      }
+    })
+    .then(response => response.json())
+    .then(data => {
+      const registeredVehiclesContainer = document.getElementById('registeredVehicles');
+      registeredVehiclesContainer.innerHTML = ''; // Clear existing content
+      if (data && data.length > 0) {
+        data.forEach(vehicle => {
+          const vehicleCard = document.createElement('div');
+          vehicleCard.classList.add('card', 'mb-3');
+          vehicleCard.innerHTML = `
+            <div class="card-body">
+              <h5 class="card-title">${vehicle.make} ${vehicle.model}</h5>
+              <!-- Display more vehicle details here -->
+            </div>
+          `;
+          registeredVehiclesContainer.appendChild(vehicleCard);
+        });
+      } else {
+        registeredVehiclesContainer.innerHTML = '<p>No registered vehicles found.</p>';
+      }
+    })
+    .catch(error => console.error('Error fetching registered vehicles:', error));
+  }
+
+  // Call the function to load registered vehicles when the profile page loads
+  document.addEventListener('DOMContentLoaded', loadRegisteredVehicles);
+
+  document.addEventListener('DOMContentLoaded', function () {
+  const form = document.getElementById('feedbackForm');
+
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    const formData = new FormData(form);
+    const feedbackData = {};
+
+    formData.forEach((value, key) => {
+      feedbackData[key] = value;
+    });
+
+    // Send feedbackData to server or perform other actions
+    console.log(feedbackData);
+
+    // Clear form fields after submission
+    form.reset();
+  });
+});
+
+// Security Monitoring in Websites
+
+// Sample code for implementing security monitoring in a web application
+
+// Import necessary security monitoring tools and libraries
+const IDS = require('intrusion-detection-system');
+const IPS = require('intrusion-prevention-system');
+const WAF = require('web-application-firewall');
+const SIEM = require('security-information-event-management');
+
+// Initialize security monitoring components
+const ids = new IDS();
+const ips = new IPS();
+const waf = new WAF();
+const siem = new SIEM();
+
+// Configure security monitoring settings
+ids.configure({ sensitivity: 'high' });
+ips.configure({ blockMode: true });
+waf.configure({ rules: 'strict' });
+siem.configure({ loggingLevel: 'info' });
+
+// Start security monitoring processes
+ids.startMonitoring();
+ips.startMonitoring();
+waf.startMonitoring();
+siem.startMonitoring();
+
+// Regularly update security measures
+setInterval(() => {
+  ids.update();
+  ips.update();
+  waf.update();
+  siem.update();
+}, 24 * 60 * 60 * 1000); // Update every 24 hours
+
+  
+</script>
+</body>
+</html>

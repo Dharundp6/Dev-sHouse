@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parking Management System's Admin Page</title>
+  <link rel="stylesheet" href="admin.css">
+  <!-- Box icons -->
+  <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    /* Additional CSS styles for visualization */
+    canvas {
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+    /* Styles for notifications */
+    .notifications_icon {
+      cursor: pointer;
+    }
+    .notifications_container {
+      display: none;
+      position: absolute;
+      top: 60px;
+      right: 20px;
+      width: 300px;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      z-index: 100;
+    }
+    .notification {
+      padding: 10px;
+      border-bottom: 1px solid #eee;
+    }
+    /* Styles for KPIs */
+    .kpi_section {
+      margin-top: 50px;
+    }
+    .kpi_container {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+    .kpi {
+      background-color: #f0f0f0;
+      border-radius: 5px;
+      padding: 20px;
+      text-align: center;
+    }
+    .kpi_value {
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .kpi_label {
+      margin-top: 10px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <div class="logo_details">
+      <i class='bx bx-code-alt'></i>
+      <div class="logo_name">
+        Parking Management
+      </div>
+    </div>
+    <ul>
+      <li>
+        <a href="#" class="active">
+          <i class='bx bx-grid-alt'></i>
+          <span class="links_name">
+            Dashboard
+          </span>
+        </a>
+      </li>
+      <li>
+        <a href="avil.html">
+          <i class='bx bxs-parking'></i>
+          <span class="links_name ">
+            Parking Spaces
+          </span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class='bx bx-user'></i>
+          <span class="links_name">
+            User Management
+          </span>
+        </a>
+      </li>
+      <li>
+        <a href="resv.html">
+          <i class='bx bx-book-alt'></i>
+          <span class="links_name">
+            Reservations
+          </span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class='bx bx-bar-chart-alt'></i>
+          <span class="links_name">
+            Analytics
+          </span>
+        </a>
+      </li>
+      <li>
+        <a href="help.html">
+          <i class='bx bx-help-circle'></i>
+          <span class="links_name">
+            Help and Support
+          </span>
+        </a>
+      </li>
+      <li>
+        <a href="home1.html">
+          <i class='bx bx-home'></i>
+          <span class="links_name">Home</span>
+        </a>
+      </li>
+      <li class="login">
+        <a href="login.html">
+          <span class="links_name login_out">
+            Logout
+          </span>
+          <i class='bx bx-log-out' id="log_out"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- End Sidebar -->
+
+  <section class="home_section">
+    <div class="topbar">
+      <div class="toggle">
+        <i class='bx bx-menu' id="btn"></i>
+      </div>
+      <div class="search_wrapper">
+        <label>
+          <span>
+            <i class='bx bx-search'></i>
+          </span>
+          <input type="search" placeholder="Search...">
+        </label>
+      </div>
+      <div class="user_wrapper">
+        <img src="user.jpg" alt="">
+      </div>
+      <!-- Notifications icon -->
+      <div class="notifications_icon">
+        <i class='bx bx-bell'></i>
+      </div>
+    </div>
+
+    <!-- End Top Bar -->
+
+    <h2 class="sub_header">Welcome Administrator</h2>
+    <div class="card-boxes">
+      <div class="box">
+        <div class="right_side">
+          <div class="numbers">9.99</div>
+          <div class="box_topic">Total Vehicles Parked</div>
+        </div>
+        <i class='bx bx-car'></i>
+      </div>
+      <div class="box">
+        <div class="right_side">
+          <div class="numbers">99.9</div>
+          <div class="box_topic">Vehicles In</div>
+        </div>
+        <i class='bx bx-toggle-right'></i>
+      </div>
+      <div class="box">
+        <div class="right_side">
+          <div class="numbers">99.99</div>
+          <div class="box_topic">Vehicles Out</div>
+        </div>
+        <i class='bx bx-toggle-left'></i>
+      </div>
+      <div class="box">
+        <div class="right_side">
+          <div class="numbers">9999</div>
+          <div class="box_topic">Parking Done Within 24 HRS</div>
+        </div>
+        <i class='bx bxs-time'></i>
+      </div>
+    </div>
+    
+    <!-- End Card Boxes -->
+    
+    <!-- Charts and Graphs visualization -->
+    <!-- Charts and Graphs visualization -->
+    <!-- Charts and Graphs visualization -->
+
+    <canvas id="myChart" width="400" height="200"></canvas>
+
+    <!-- Total vehicles parked and available spaces pie chart -->
+
+    <div style="display: flex; justify-content: space-between;">
+
+      <!-- Total vehicles parked and available spaces pie chart -->
+
+      <div class="box" style="width: 48%;">
+        <div class="right_side">
+          <div class="box_topic"> Total Vehicles Parked and Available Spaces</div>
+        </div>
+        <canvas id="totalVehiclesChart" width="300" height="300"></canvas>
+      </div>
+
+      <!-- Booking status pie chart -->
+
+      <div class="box" style="width: 48%;">
+        <div class="right_side">
+          <div class="box_topic">Booking Status</div>
+        </div>
+        <canvas id="bookingStatusChart" width="300" height="300"></canvas>
+      </div>
+    </div>
+
+    <!-- Time series visualization from 2021 till present -->
+    
+    <div class="box">
+      <div class="right_side">
+        <div class="box_topic">Time Series Visualization (2021 - Present)</div>
+      </div>
+      <canvas id="timeSeriesChart" width="400" height="200"></canvas>
+    </div>
+
+    <!-- Notifications container -->
+    <div class="notifications_container">
+      <!-- Notifications content -->
+      <!-- Example notification -->
+      <div class="notification">
+        <div class="notification_content">
+          New notification message goes here.
+        </div>
+      </div>
+    </div>
+
+    <!-- Performance Metrics (KPIs) section -->
+    
+    <section class="kpi_section">
+      <h2 class="sub_header">Performance Metrics (KPIs)</h2>
+      <div class="kpi_container">
+        <div class="kpi">
+          <div class="kpi_value">150</div>
+          <div class="kpi_label">Total Bookings</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi_value">90%</div>
+          <div class="kpi_label">Booking Success Rate</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi_value">30 mins</div>
+          <div class="kpi_label">Average Parking Duration</div>
+        </div><!-- Add more KPIs as needed -->
+      </div>
+    </section>
+
+    <!-- Data Filters section -->
+    <section class="data_filters_section">
+      <h2 class="sub_header">Data Filters</h2>
+      <!-- Add your data filters UI here -->
+      <!-- Example filter -->
+      <div class="filter">
+        <label for="filter_date">Date:</label>
+        <input type="date" id="filter_date" name="filter_date">
+      </div>
+      <!-- Add more filters as needed -->
+    </section>
+    
+    <!-- Add More chart that you need  -->
+
+    <script src="admin.js"></script>
+    <script>
+
+      // JavaScript code for Chart.js visualization
+      var ctx = document.getElementById('myChart').getContext('2d');
+      var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+          datasets: [{
+            label: 'VEHICLE PARKINGS ',
+            data: [180, 150, 45, 75, 200, 315],
+            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+            borderColor: 'rgba(255, 99, 132, 1)',
+            borderWidth: 1
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+
+      // Total vehicles parked and available spaces pie chart
+
+      var totalVehiclesChartCtx = document.getElementById('totalVehiclesChart').getContext('2d');
+      var totalVehiclesChart = new Chart(totalVehiclesChartCtx, {
+        type: 'pie',
+        data: {
+          labels: ['Parked', 'Available'],
+          datasets: [{
+            label: 'Total Vehicles',
+            data: [75, 25], // Example data, replace with actual values
+            backgroundColor: [
+              'rgba(255, 99, 132, 0.5)',
+              'rgba(54, 162, 235, 0.5)'
+            ],
+            borderColor: [
+              'rgba(255, 99, 132, 1)',
+              'rgba(54, 162, 235, 1)'
+            ],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          // Add options if needed
+        }
+      });
+
+      // BOOKING STATUS PIE CHART 
+
+      var bookingStatusChartCtx = document.getElementById('bookingStatusChart').getContext('2d');
+      var bookingStatusChart = new Chart(bookingStatusChartCtx, {
+        type: 'pie',
+        data: {
+          labels: ['Booked', 'Reserved', 'Cancelled'],
+          datasets: [{
+            label: 'Booking Status',
+            data: [40, 30, 30], // Example data, replace with actual values
+            backgroundColor: [
+              'rgba(255, 205, 86, 0.5)',
+              'rgba(75, 192, 192, 0.5)',
+              'rgba(255, 159, 64, 0.5)'
+            ],
+            borderColor: [
+              'rgba(255, 205, 86, 1)',
+              'rgba(75, 192, 192, 1)',
+              'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          // Add options if needed
+        }
+      });
+
+      // JavaScript for the time series chart
+  var timeSeriesCtx = document.getElementById('timeSeriesChart').getContext('2d');
+  var timeSeriesChart = new Chart(timeSeriesCtx, {
+    type: 'line',
+    data: {
+      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+      datasets: [{
+        label: 'Data Points',
+        data: [/* Your data points for each month from 2021 till present */],
+        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+        borderColor: 'rgba(54, 162, 235, 1)',
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+   
+     // JavaScript for notifications
+     
+      document.addEventListener("DOMContentLoaded", function() {
+        const notificationsIcon = document.querySelector('.notifications_icon');
+        const notificationsContainer = document.querySelector('.notifications_container');
+
+        // Toggle notifications container visibility when clicking on the icon
+
+        notificationsIcon.addEventListener('click', function() {
+          notificationsContainer.classList.toggle('show');
+        });
+
+        // Close notifications container when clicking outside of it
+        document.addEventListener('click', function(event) {
+          if (!notificationsContainer.contains(event.target) && !notificationsIcon.contains(event.target)) {
+            notificationsContainer.classList.remove('show');
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Gateway Integration</title>
+    <link rel="icon" href="pay.png" type="image/png" sizes="16x16">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Fugaz+One' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Alegreya+Sans:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,800,800italic,900,900italic' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../../images/demobar_w3_4thDec2019.css">
+    <link href="styles2.css" rel="stylesheet" type="text/css" media="all" />
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Payment Gateway</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="home1.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="user.html">User profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="avil.html">Availability</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="login.html">Login</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="main">
+            <div class="content">
+                <div class="tab">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="credit-tab" data-toggle="tab" href="#credit" role="tab" aria-controls="credit" aria-selected="true">Credit Card</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="net-banking-tab" data-toggle="tab" href="#net-banking" role="tab" aria-controls="net-banking" aria-selected="false">Net Banking</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="paypal-tab" data-toggle="tab" href="#paypal" role="tab" aria-controls="paypal" aria-selected="false">PayPal</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="debit-card-tab" data-toggle="tab" href="#debit-card" role="tab" aria-controls="debit-card" aria-selected="false">Debit Card</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="credit" role="tabpanel" aria-labelledby="credit-tab">
+                            <!-- Credit Card Info Form -->
+                                <div class="payment-info">
+                                    <h3 class="pay-title">Credit Card Info</h3>
+                                    <form>
+                                        <div class="form-group">
+                                            <label for="amount">Amount:</label>
+                                            <input type="text" class="form-control" id="amount" placeholder="Enter amount" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="name">Name on Card:</label>
+                                            <input type="text" class="form-control" id="name" placeholder="Enter name on card" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="cardNumber">Card Number:</label>
+                                            <input type="text" class="form-control" id="cardNumber" placeholder="Enter card number" required>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="col">
+                                                <label for="expiryMonth">Expiration Month:</label>
+                                                <input type="text" class="form-control" id="expiryMonth" placeholder="MM" required>
+                                            </div>
+                                            <div class="col">
+                                                <label for="expiryYear">Expiration Year:</label>
+                                                <input type="text" class="form-control" id="expiryYear" placeholder="YYYY" required>
+                                            </div>
+                                            <div class="col">
+                                                <label for="cvv">CVV:</label>
+                                                <input type="text" class="form-control" id="cvv" placeholder="CVV" required>
+                                            </div>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                                    </form>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="tab-pane fade" id="net-banking" role="tabpanel" aria-labelledby="net-banking-tab">
+                            <!-- Net Banking Form -->
+                            <div class="payment-info">
+                                <h3 class="pay-title">Net Banking</h3>
+                                <form>
+                                    <div class="form-group">
+                                        <label for="bank">Select Bank:</label>
+                                        <select class="form-control" id="bank" required>
+                                            <option value="">Choose Bank</option>
+                                            <option value="Andhra Bank">Andhra Bank</option>
+                                            <option value="Allahabad Bank">Allahabad Bank</option>
+                                            <option value="Bank of Baroda">Bank of Baroda</option>
+                                            <!-- Add more bank options as needed -->
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="username">Username:</label>
+                                        <input type="text" class="form-control" id="username" placeholder="Enter username" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="password">Password:</label>
+                                        <input type="password" class="form-control" id="password" placeholder="Enter password" required>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                                </form>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="tab-pane fade" id="paypal" role="tabpanel" aria-labelledby="paypal-tab">
+                            <!-- PayPal Login Form -->
+                        </div>
+                        <div class="tab-pane fade" id="debit-card" role="tabpanel" aria-labelledby="debit-card-tab">
+                            <!-- Debit Card Info Form -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="js/easyResponsiveTabs.js" type="text/javascript"></script>
+    <script>
+        $(document).ready(function() {
+            $('#myTab a').on('click', function(e) {
+                e.preventDefault();
+                $(this).tab('show');
+            });
+        });
+    </script>
+</body>
+</html>

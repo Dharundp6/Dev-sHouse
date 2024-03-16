@@ -1,0 +1,295 @@
+/* styles.css */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial and Helvetica;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header Styles */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #0b0909;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    max-width: 100px;
+    margin-right: 10px;
+}
+
+.heading {
+    margin: 0;
+    font-size: 36px;
+    color: #fff;
+}
+
+.promo-banner {
+    position: relative;
+    max-width: 55%;
+    max-height: 100px;
+    margin-top: 0;
+    color: #0b0909;
+    max-height: 200px; /* Adjust the maximum height as needed */
+    overflow: hidden;
+}
+
+.slides {
+    display:flex;
+    width: 100%;
+    height: 100%;
+    transition: all .5s ease-in-out;
+    max-height: 100%; /* Ensure slides fill the height of the banner */
+    transition: transform 0.5s ease;
+
+}
+.slide {
+    display: run-in; 
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    box-sizing: border-box;
+    background-color: rgba(0,0, 0, 0.7);
+    flex-shrink: 0; 
+    box-shadow: inset  0 -4px 8px rgb(248, 244, 244);
+    max-width: 100%;
+    max-height: 100%; /* Ensure slides fill the height of the banner */
+}
+.active-slide {
+    display:block; /* Display the active slide */
+}
+
+button.prev, button.next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: 1px;
+    height: 100px;
+    margin-top: -50px;
+    padding: 16px;
+    color: rgb(30, 16, 224);
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+}
+
+/* Fading animation */
+
+.fade {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 1.5s;
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+    from {
+        opacity: .4
+    }
+    to {
+        opacity: 1
+    }
+}
+
+@keyframes fade {
+    from {
+        opacity: .4
+    }
+    to {
+        opacity: 1
+    }
+}
+
+
+button.prev {
+    left: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+button.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev:hover,
+.next:hover {
+    background-color: rgba(180, 228, 240, 0.8);
+}
+
+/* Example styles for Boxicons icons */
+.bx {
+    color: #333;
+    font-size: 24px;
+    margin-right: 5px;
+  }
+  .bx-home{
+    color:gold; 
+  }
+  .bx-info-circle {
+    color: #ab0733; 
+  }
+  .bx-car {
+    color: #ff6347; /* Change color for car icon */
+  }
+  .bx-help-circle{
+    color: #b5cbe5;
+  }
+  .bx-news{
+    color: #4CAF50;
+  }
+  .bx-user{
+    color:blue
+  }
+
+.registration-form {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.registration-form h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 18px;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="tel"],
+input[type="email"],
+select,
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='6' viewBox='0 0 12 6'%3E%3Cpath fill='%23333' d='M6 6L0 0h12z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px top 50%;
+    background-size: 8px 4px;
+    padding-right: 25px;
+}
+
+button[type="submit"] {
+    padding: 12px 24px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 18px;
+}
+
+button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+.instructions {
+    font-style: italic;
+    color: #666;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+footer nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+footer nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+footer nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+footer nav ul li a:hover {
+    text-decoration: underline;
+}
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  button {
+    display: block;
+    margin-top: 10px;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 3px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }

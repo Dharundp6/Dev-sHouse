@@ -1,0 +1,435 @@
+/* Global Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial and Helvetica
+}
+
+/* Header Styles */
+header {
+    position: relative;
+    background-image: url('back.png'); /* Replace with your image URL */
+    background-size: cover;
+    background-position: center;
+    height: 500px; /* Adjust height as needed */
+    color: #fff;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative; /* Ensure the header-overlay respects this positioning */
+}
+
+.header-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Adjust opacity as needed */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* Align items vertically */
+}
+
+.welcome-message {
+    font-size: 32px;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 20px; /* Add some space below the welcome message */
+}
+
+.nav-container {
+    border-radius: 30px; /* Adjust border radius for curved edges */
+    background-color: rgba(28, 50, 130, 0.662); /* Adjust background color and opacity */
+    padding: 20px 20px; /* Adjust padding */
+    display: inline-block; /* Ensure the container fits its content */
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 10px; /* Adjust margin between links */
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 24px; /* Increase font size */
+    padding: 10px;
+    transition: all 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: rgba(156, 189, 236, 0.908); /* Adjust opacity as needed */
+    border-radius: 5px;
+}
+
+.login-icon,
+.signup-icon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: #fff;
+    font-size: 24px;
+    text-decoration: none;
+}
+
+.login-icon{
+    display: flex;
+    align-items: center;
+    color: rgb(19, 83, 153);
+}
+
+.subheader {
+    background-color: #f9f9f9;
+    padding: 50px 0;
+}
+
+.subheader .container {
+    text-align: center;
+}
+
+.subheader h2 {
+    font-size: 36px;
+    line-height: normal;
+    margin: 0;
+    letter-spacing: -1px;
+    font-weight: bold;
+    color: #7c7d7e;
+    margin-bottom: 20px;
+    container: initial;
+    color: #1877cf;
+}
+
+.video-and-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.video {
+    margin-right: 20px;
+}
+
+.text {
+    max-width: 400px;
+    width: 100%;
+}
+
+.subheader p {
+    font-size: 25px;
+    line-height: 1.4;
+    color: #7c7d7e;
+    margin-bottom: 10px;
+    color: #190606;
+}
+
+.subheader .cta-btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.subheader .cta-btn:hover {
+    background-color: #45a049;
+
+}
+.hero {
+    background-color: #f9f9f9;
+    padding: 100px 0;
+    text-align: center;
+}
+
+.hero .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hero-content {
+    flex: 1;
+    max-width: 50%;
+    padding: 0 20px;
+}
+
+.hero-content h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.hero-content p {
+    font-size: 20px;
+    margin-bottom: 30px;
+    color: #666;
+}
+
+.cta-btn {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.cta-btn:hover {
+    background-color: #0056b3;
+}
+
+.hero-media {
+    flex: 1;
+    max-width: 50%;
+    padding: 0 20px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .hero .container {
+        flex-direction: column;
+    }
+
+    .hero-content,
+    .hero-media {
+        max-width: 100%;
+        margin-bottom: 40px;
+    }
+}
+.subheader-title {
+    text-align: center;
+}
+
+.facilities {
+    text-align: center;
+}
+
+.facility-slider {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.facility-slider img {
+    display: none;
+    max-width: 100%;
+    max-height: fit-content;
+}
+
+.prev-btn,.next-btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    bottom: -50%;
+    transform: translateY(-50%);
+    z-index: 1;
+}
+
+.prev-btn {
+    left: 20px;
+}
+
+.next-btn {
+    right: 20px;
+}
+
+/* Adjust container size and layout */
+/* Adjust container size and layout */
+.services-container {
+    display: flex;
+    flex-direction: column; /* Display containers in a column */
+}
+.service {
+    display: flex;
+    justify-content: space-between; /* Align items with space between */
+    align-items: center; /* Center items vertically */
+    padding: 20px; /* Add padding to each box */
+    background-color: #f9f9f9; /* Background color for each box */
+    border-radius: 10px; /* Add rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow effect */
+    transition: transform 0.3s ease; /* Smooth hover effect */
+}
+
+/* For small screens, stack containers vertically */
+@media (max-width: 768px) {
+    .service {
+        width: 100%; /* Full width for small screens */
+    }
+}
+.service:hover {
+    transform: scale(1.05); /* Increase size on hover */
+}
+/* Set a fixed size for all images */
+.service-image img {
+    width: 100%; /* Ensure image fills its container */
+    height: auto; /* Maintain aspect ratio */
+    max-width: 100px; /* Set maximum width for image */
+    max-height: 100px; /* Set maximum height for image */
+}
+
+/* Features and Benefits Section */
+.features-and-benefits {
+    background-color: #f9f9f9;
+    padding: 80px 0;
+}
+
+.features-and-benefits .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.features-and-benefits h2 {
+    font-size: 36px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.features-and-benefits .feature {
+    margin-bottom: 30px;
+}
+
+.features-and-benefits .feature h3 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #1877cf;
+    margin-bottom: 10px;
+}
+
+.features-and-benefits .feature p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #666;
+}
+
+/* Case Studies/Testimonials Section */
+.case-studies {
+    background-color: #ffffff;
+    padding: 80px 0;
+}
+
+.case-studies .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.case-studies h2 {
+    font-size: 36px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.case-studies .testimonial {
+    margin-bottom: 30px;
+}
+
+.case-studies .testimonial blockquote {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.case-studies .testimonial cite {
+    font-style: italic;
+    color: #777;
+}
+footer {
+    background-color: #04083d;
+    color: #fff;
+    padding: 50px 0;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.contact-info,
+.navigation,
+.social-media {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.contact-info h3,
+.navigation h3,
+.social-media h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.contact-info p,
+.navigation ul,
+.social-media ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.navigation ul li {
+    margin-bottom: 10px;
+}
+
+.navigation ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.social-media ul li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.social-media ul li:last-child {
+    margin-right: 0;
+}
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.element {
+    animation: fadeIn 1s ease-in-out;
+}
+.element {
+    transition: opacity 0.5s ease-in-out;
+}
+
+.element:hover {
+    opacity: 0.5;
+}
+
+
+
+
+
+
+
