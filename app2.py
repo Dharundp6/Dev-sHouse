@@ -1,9 +1,11 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 import cv2
 import numpy as np
 from ultralytics import YOLO
 import supervision as sv
 import base64
+import os
+from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 
@@ -17,8 +19,8 @@ except FileNotFoundError:
 # Function to perform object detection and annotation
 def perform_detection(image, confidence_threshold):
     results = model(image)[0]
+    # Define Detections and BoundingBoxAnnotator from the supervision module
     detections = sv.Detections.from_ultralytics(results)
-
     bounding_box_annotator = sv.BoundingBoxAnnotator()
     label_annotator = sv.LabelAnnotator()
 
@@ -48,36 +50,44 @@ def convert_image_to_base64(image_bytes):
     encoded_image = base64.b64encode(image_bytes)
     return encoded_image.decode('utf-8')
 
+@app.route('/', methods=['GET', 'POST'])
 @app.route('/detect', methods=['POST'])
-def detect():
+def index():
     if request.method == 'POST':
-        # Get the image file from the request
-        image_file = request.files['image']
+        if 'image' in request.files:
+            # Get the image file from the request
+            image_file = request.files['image']
 
-        # Read the image file
-        image_bytes = image_file.read()
-        image = cv2.imdecode(np.frombuffer(image_bytes, np.uint8), cv2.IMREAD_COLOR)
+            # Read the image file
+            image_bytes = image_file.read()
+            image = cv2.imdecode(np.frombuffer(image_bytes, np.uint8), cv2.IMREAD_COLOR)
 
-        # Set the confidence threshold (you can modify this as needed)
-        confidence_threshold = 0.2
+            # Set the confidence threshold (you can modify this as needed)
+            confidence_threshold = 0.2
 
-        # Perform object detection and annotation
-        annotated_image, car_count, free_count = perform_detection(image, confidence_threshold)
+            # Perform object detection and annotation
+            annotated_image, car_count, free_count = perform_detection(image, confidence_threshold)
 
-        # Encode the annotated image as JPEG
-        _, encoded_image = cv2.imencode('.jpg', annotated_image)
+            # Encode the annotated image as JPEG
+            _, encoded_image = cv2.imencode('.jpg', annotated_image)
 
-        # Convert the encoded image to base64 string
-        encoded_image_base64 = convert_image_to_base64(encoded_image.tobytes())
+            # Convert the encoded image to base64 string
+            encoded_image_base64 = convert_image_to_base64(encoded_image.tobytes())
 
-        # Create a response dictionary
-        response = {
-            'image': encoded_image_base64,
-            'car_count': car_count,
-            'free_count': free_count
-        }
+            # Create a response dictionary
+            response = {
+                'image': encoded_image_base64,
+                'car_count': car_count,
+                'free_count': free_count
+            }
 
-        return jsonify(response)
+            return jsonify(response)
+        else:
+            # Return a message indicating that the image field is missing
+            return jsonify({'error': 'Image field is missing in the request'}), 400
+    else:
+        # Main page with file upload form
+        return render_template('index.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
