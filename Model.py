@@ -64,5 +64,6 @@ if predict_button and uploaded_image is not None:
     annotated_image = cv2.putText(annotated_image, f"free: {free_count}", (10, 60),
                                   cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2, cv2.LINE_AA)
 
+    
     # Display annotated image
     st.image(annotated_image, channels="BGR", caption="Annotated Image")
