@@ -1,5 +1,6 @@
-## HyperPark: Smart Parking Management Solution
-  HyperPark is an innovative smart parking management solution powered by YOLO (You Only Look Once), a state-of-the-art deep learning model, designed to revolutionize traditional parking systems. With its advanced capabilities, HyperPark seamlessly integrates vehicle detection, size estimation, and distance measurement to streamline parking operations and enhance user experience.
+## HyperPark: Smart Parking Management 
+   An innovative smart parking management solution leveraging state-of-the-art deep learning models, designed to revolutionize traditional parking systems. With its advanced capabilities, HyperPark seamlessly integrates vehicle detection, size estimation, and distance measurement to streamline parking operations and enhance user experience.Utilizing a cutting-edge deep learning framework, we have fine-tuned our models to accurately detect vehicles and estimate their sizes within parking spaces. Additionally, our system accurately measures the distance between vehicles, optimizing parking space allocation and improving navigation within parking lots.
+  
 
 ## Features
 - Car detection: Our model is trained to detect cars and free slots on parking slots 
