@@ -32,6 +32,7 @@ while cap.isOpened():
     im0 = dist_obj.start_process(im0, tracks)
     video_writer.write(im0)
 
+
 cap.release()
 video_writer.release()
 cv2.destroyAllWindows()
